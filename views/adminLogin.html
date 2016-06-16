@@ -1,0 +1,53 @@
+<div class="background"></div>
+<br><br><br><br><br><br><br><br><br>
+<div class="login-block">
+  <form class="form-horizontal">
+    <h1>Bienvenido</h1>
+    <div class="form-group">
+      <label>Usuario</label>
+      <input type="text" class="form-control" readonly>
+    </div>      
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" class="form-control">
+    </div>
+    <br>                                        
+    <button type="submit" class="btn btn-primary btn-block"><b>Ingresar</b></button>
+    <br><br>
+    <img src="img/logo.png">
+  </form>      
+</div>
+
+
+<style>
+
+h1 {
+  font-size: 40px;
+}
+
+.background {
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  background:url(img/bg-image.jpg) center center no-repeat fixed;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover
+}
+
+.login-block {
+  position: fixed;
+  display: block;
+  left: 50%;
+  width: 400px;
+  margin-left: -200px;
+}
+
+.sidebar, .navbar {
+  display:none;
+}
+
+</style>
