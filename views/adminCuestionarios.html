@@ -15,29 +15,24 @@
     </div><!-- /.row page-header-->
   </div>  
   <uib-tabset active="active">
-    <uib-tab header="Preguntas">
+    <uib-tab heading="Preguntas">
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Proyecto</th>
-              <th>Cliente</th>
-              <th>Desarrollador</th>
-              <th>Estado</th>
-              <th>Requerimientos</th>
-              <th>Fecha Lanzamiento</th>
-              <th>Alquiler finaliza</th>
+              <th>ID</th>
+              <th>Pregunta</th>
+              <th>Respuesta Correcta</th>
+              <th>modulo</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="project in projects">
-              <td>{{project.Name}}</td>
-              <td>{{project.Client}}</td>
-              <td>{{project.Developer}}</td>
-              <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{project.State}}</td>
-              <td><span class="glyphicon glyphicon-file" aria-hidden="true"></span>{{project.Requirements}}</td>
-              <td>{{project.Launch_Date}}</td>
-              <td>{{project.End_Date}}</td>
+            <tr ng-repeat="question in questions">
+              <td>{{question.id}}</td>
+              <td>{{question.pregunta}}</td>
+              <td>{{question.respCorrecta}}</td>
+              <td>{{question.idModulo}}</td>
+              <td><button class="btn btn-block">Modificar</button></td>
             </tr>
           </tbody>
         </table>

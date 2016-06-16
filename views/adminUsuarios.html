@@ -15,7 +15,7 @@
     </div><!-- /.row page-header-->
   </div>
   <uib-tabset active="active">
-    <uib-tab heading="Desarrolladores">
+    <uib-tab heading="Usuarios">
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
@@ -35,55 +35,13 @@
           <tbody>
             <tr ng-repeat="user in users">
               <td>{{user.id}}</td>
-              <td class="ellipsis">{{user.user}}</td>
-              <td class="ellipsis">{{user.pass}}</td>
-              <td class="ellipsis">{{user.name}}</td>
-              <td class="ellipsis">{{user.lastname}}</td>
+              <td>{{user.user}}</td>
+              <td>{{user.pass}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.lastname}}</td>
               <td>{{user.legajo}}</td>
-              <td class="ellipsis">{{user.puesto}}</td>
+              <td>{{user.puesto}}</td>
               <td>{{user.examen}}</td>
-              <td><a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-              <td><a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </uib-tab>
-    <uib-tab heading="Clientes Registrados">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr >
-              <th>Nombre</th>
-              <th>Perfil creado el</th>
-              <th>Alquileres activos</th>
-              <th>Alquileres totales</th>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="user in users | filter:{Type: 'Client'}">
-              <td>{{user.Name}}</td>
-              <td>{{user.mail}}</td>
-              <td>-falta logica-</td>
-              <td>-falta logica</td>
-              <td>-falta logica</td>
-              <td>-falta logica</td>
-              <td>-falta logica</td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td><span></span></td>
-              <td></td>
-              <td><span></span></td>
               <td><a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
               <td><a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
             </tr>
