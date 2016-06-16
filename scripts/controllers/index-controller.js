@@ -23,7 +23,7 @@
         })
         dbFactory.getAPI('preguntas','').success(function (response) {
            $scope.questions = response
-            dbFactory.getAPI('respuestas','').success(function (response) {
+            dbFactory.getAPI('respuestasEmpleados','').success(function (response) {
                 var answers = response;
                 var grade = 0
                 var pass = 0,fail = 0
