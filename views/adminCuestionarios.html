@@ -24,6 +24,7 @@
               <th>Pregunta</th>
               <th>Respuesta Correcta</th>
               <th>modulo</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -32,8 +33,15 @@
               <td>{{question.pregunta}}</td>
               <td>{{question.respCorrecta}}</td>
               <td>{{question.idModulo}}</td>
-              <td><button class="btn btn-block">Modificar</button></td>
+              <td><a href="" ng-click="goTo('CuestionarioEdit')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> editar</a></td>
             </tr>
+            <tr>
+              <td></td>
+              <td><input type="text" class="form-control"></td>
+              <td><input type="number" class="form-control" max-lenght="1"></td>
+              <td><input type="number" class="form-control" max-lenght="1"></td>
+              <td><button class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>
+            </tr>            
           </tbody>
         </table>
       </div>
