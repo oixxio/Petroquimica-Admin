@@ -46,7 +46,9 @@
                 $scope.perPass = (pass * 100)/(pass+fail)
             })
         })
-        
+        dbFactory.getAPI('changeLog','').success(function (response) {
+            $scope.changes = response
+        })
     	/*tipo de usuario mockapeado*/
     	switch (loginFactory.userRole()) {
     		case 'admin':

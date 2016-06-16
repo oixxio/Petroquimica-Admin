@@ -15,8 +15,8 @@
 	    when('/aplicaciones',{
 			templateUrl: 'views/adminAplicaciones.html'
 		}).
-		when('/newApp',{
-			templateUrl: 'views/newApp.html'
+		when('/cambios',{
+			templateUrl: 'views/adminRegistroCambios.html'
 		});
 	}]);
 })(); 
