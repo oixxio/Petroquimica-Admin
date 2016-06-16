@@ -20,7 +20,10 @@
 		}).		
 	    when('/CuestionarioAdd',{
 			templateUrl: 'views/adminCuestionarioAdd.html'
-		}).				
+		}).	
+	    when('/log',{
+			templateUrl: 'views/adminLog.html'
+		}).						
 	    when('/aplicaciones',{
 			templateUrl: 'views/adminAplicaciones.html'
 		}).
