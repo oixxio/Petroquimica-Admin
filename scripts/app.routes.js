@@ -9,6 +9,9 @@
 	    when('/usuarios',{
 			templateUrl: 'views/adminUsuarios.html'
 		}).
+	    when('/usuarioEdit',{
+			templateUrl: 'views/adminUsuarioEdit.html'
+		}).		
 	    when('/cuestionarios',{
 			templateUrl: 'views/adminCuestionarios.html'
 		}).
