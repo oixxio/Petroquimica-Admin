@@ -43,26 +43,26 @@
           <div class="form-group">
             <label>Seleccione la respuesta correcta</label>           
             <div class="btn-group btn-group-justified">          
-              <label class="btn btn-default" ng-model="respuestaCorrecta" uib-btn-radio="1" uncheckable>Respuesta 1</label>
-              <label class="btn btn-default" ng-model="respuestaCorrecta" uib-btn-radio="2" uncheckable>Respuesta 2</label>
-              <label class="btn btn-default" ng-model="respuestaCorrecta" uib-btn-radio="3" uncheckable>Respuesta 3</label>          
+              <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'1'" uncheckable>Respuesta 1</label>
+              <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'2'" uncheckable>Respuesta 2</label>
+              <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'3'" uncheckable>Respuesta 3</label>          
             </div>           
           </div>
           <br>
           <div class="form-group">
             <label>Seleccione al módulo que corresponde</label>           
             <div class="btn-group btn-group-justified">          
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="1" uncheckable>1</label>
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="2" uncheckable>2</label>
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="3" uncheckable>3</label>
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="4" uncheckable>4</label>
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="5" uncheckable>5</label>
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="6" uncheckable>6</label> 
-              <label class="btn btn-default" ng-model="moduloSelected" uib-btn-radio="7" uncheckable>7</label>                      
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'1'" uncheckable>1</label>
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'2'" uncheckable>2</label>
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'3'" uncheckable>3</label>
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'4'" uncheckable>4</label>
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'5'" uncheckable>5</label>
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'6'" uncheckable>6</label> 
+              <label class="btn btn-default" ng-model="qData.modulo" uib-btn-radio="'7'" uncheckable>7</label>                      
             </div>           
           </div>                                 
           <br>                                        
-          <button type="submit" class="btn btn-primary btn-block"><b>Guardar cambios</b></button>
+          <button class="btn btn-primary btn-block" ng-click="saveData(qData)"><b>Guardar cambios</b></button>
         </form>      
       </div>
     </div><!--/.row-->

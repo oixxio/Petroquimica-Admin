@@ -15,7 +15,7 @@
 	    when('/cuestionarios',{
 			templateUrl: 'views/adminCuestionarios.html'
 		}).
-	    when('/CuestionarioEdit',{
+	    when('/CuestionarioEdit',{ 
 			templateUrl: 'views/adminCuestionarioEdit.html'
 		}).		
 	    when('/CuestionarioAdd',{
@@ -26,6 +26,9 @@
 		}).
 		when('/cambios',{
 			templateUrl: 'views/adminRegistroCambios.html'
+		});
+		when('/login',{
+			templateUrl: 'views/adminLogin.html'
 		});
 	}]);
 })(); 
