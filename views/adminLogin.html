@@ -3,18 +3,19 @@
 <div class="login-block">
   <form class="form-horizontal">
     <h1>Bienvenido</h1>
+    <br>
     <div class="form-group">
-      <label>Usuario</label>
-      <input type="text" class="form-control" readonly>
+      <input type="text" class="form-control" placeholder="Usuario">
     </div>      
     <div class="form-group">
-      <label>Contraseña</label>
-      <input type="password" class="form-control">
+      <input type="password" class="form-control"  placeholder="Contraseña">
     </div>
     <br>                                        
-    <button type="submit" class="btn btn-primary btn-block"><b>Ingresar</b></button>
+    <button ng-click="goTo('/');" type="submit" class="btn btn-primary btn-block"><b>Ingresar</b></button>
     <br><br>
-    <img src="img/logo.png">
+    <div style="text-align:center;">
+      <img width="150px" src="img/logo.png">
+    </div>
   </form>      
 </div>
 
@@ -23,6 +24,8 @@
 
 h1 {
   font-size: 40px;
+  text-align: center;
+  color: white;
 }
 
 .background {
