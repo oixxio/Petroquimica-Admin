@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="usersController">
   <div class="col-md-12 main">          
     <div class="row page-header">
       <div class="col-md-2">
@@ -42,7 +42,7 @@
               <td>{{user.legajo}}</td>
               <td>{{user.puesto}}</td>
               <td>{{user.examen}}</td>
-              <td><a href="" ng-click="goTo('usuarioEdit')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+              <td><a href="" ng-click="setUEdit(user)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
               <td><a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
               <td><a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
             </tr>

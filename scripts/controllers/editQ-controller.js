@@ -12,7 +12,7 @@
             delete obj.id
             dbFactory.putAPI('preguntas',key,obj).then(function (response) {
                 alert("Cambios guardados correctamente")
-                $route.reload()
+                $location.path('/cuestionarios')
             }) 
         }
     }])

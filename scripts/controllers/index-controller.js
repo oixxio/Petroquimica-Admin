@@ -10,8 +10,8 @@
             var usersTrained = 0
             $scope.usersQty = users.length
 
-            for (var i = 0; i < response.length; i++) {
-                usersTrained += parseInt(response[i].moduloA)
+            for (var i = 0; i < users.length; i++) {
+                usersTrained += parseInt(response.data[i].moduloA)
                 if (users[i].moduloA == '1') {
                     users[i].examen = 'Si'
                 }else{

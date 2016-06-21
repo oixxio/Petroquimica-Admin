@@ -1,52 +1,53 @@
-   
-<div class="col-md-12 main">          
-	<div class="row page-header">
-	  <div class="col-md-12">
-	    <h1>Editar Usuario (id)</h1>
-	  </div><!-- /.col-md-12 -->   
-	</div><!-- /.row page-header -->
-</div><!-- /.col-md-12 main -->
-<div class="container-fluid"><!--Profile container-->
-  <br><br>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" class="form-control" readonly>
-        </div>      
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" class="form-control" readonly>
-        </div>  
-        <div class="form-group">
-          <label>Apellido</label>
-          <input type="text" class="form-control" readonly>
-        </div>  
-        <div class="form-group">
-          <label>Legajo</label>
-          <input type="text" class="form-control" readonly>
-        </div>
-        <div class="form-group">
-          <label>Puesto</label>
-          <input type="text" class="form-control" readonly>
-        </div>                                   
-        <div class="form-group">
-          <label>¿Examen realizado?</label>
-          <br>
-          <div class="btn-group">
-            <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'No'">No</label>
-            <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Sí'">Sí</label>
+<div ng-controller="editUController">
+  <div class="col-md-12 main">          
+    <div class="row page-header">
+      <div class="col-md-12">
+        <h1>Editar Usuario ({{userId}})</h1>
+      </div><!-- /.col-md-12 -->   
+    </div><!-- /.row page-header -->
+  </div><!-- /.col-md-12 main -->
+  <div class="container-fluid"><!--Profile container-->
+    <br><br>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label>Nombre de usuario</label>
+            <input type="text" class="form-control" readonly ng-value="uData.user">
+          </div>      
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="text" class="form-control" ng-model="uData.pass">
           </div>
-        </div>
-        <br>                                        
-        <button type="submit" class="btn btn-primary btn-block"><b>Guardar cambios</b></button>
-      </form>      
-    </div>
-  </div><!--/.row-->
-  <br><br><br>
-</div><!--/Profile container-->
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" readonly ng-value="uData.name">
+          </div>  
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" class="form-control" readonly ng-value="uData.lastname">
+          </div>  
+          <div class="form-group">
+            <label>Legajo</label>
+            <input type="text" class="form-control" readonly ng-value="uData.legajo">
+          </div>
+          <div class="form-group">
+            <label>Puesto</label>
+            <input type="text" class="form-control" readonly ng-value="uData.puesto">
+          </div>                                   
+          <div class="form-group">
+            <label>¿Examen realizado?</label>
+            <br>
+            <div class="btn-group">
+              <label class="btn btn-default" ng-model="uData.moduloA" uib-btn-radio="'0'">No</label>
+              <label class="btn btn-default" ng-model="uData.moduloA" uib-btn-radio="'1'">Sí</label>
+            </div>
+          </div>
+          <br>                                        
+          <button type="submit" class="btn btn-primary btn-block" ng-click="saveUData(uData)"><b>Guardar cambios</b></button>
+        </form>      
+      </div>
+    </div><!--/.row-->
+    <br><br><br>
+  </div><!--/Profile container-->
+</div>   
