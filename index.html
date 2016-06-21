@@ -18,7 +18,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="cursor:pointer;"><img width="115px" src="img/logo.png"></a>
+                    <a class="navbar-brand" style="cursor:pointer;"><img width="115px" src="img/logo.png" 
+                      ng-click="goTo('/dashboard')"></a>
                 </div>
                 <h2 style="text-align:center;color:white;">Panel de Administrador</h2>
             </div>
@@ -29,7 +30,7 @@
                 <div class="col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li ng-class="active1" ng-style="userMenu(1)"
-                            ng-click="goTo('/');setActive(1)">
+                            ng-click="goTo('/dashboard');setActive(1)">
                             <a style="cursor:pointer;">
                                 <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> 
                                 Dashboard

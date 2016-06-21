@@ -4,6 +4,9 @@
     .config(['$routeProvider',function($routeProvider) {
 		$routeProvider.
 	    when('/',{
+			templateUrl: 'views/adminLogin.html'
+		}).
+		when('/dashboard',{
 			templateUrl: 'views/adminDashboard.html'
 		}).
 	    when('/usuarios',{
@@ -26,9 +29,6 @@
 		}).
 		when('/cambios',{
 			templateUrl: 'views/adminRegistroCambios.html'
-		}).
-		when('/login',{
-			templateUrl: 'views/adminLogin.html'
 		});
 	}]);
 })(); 
