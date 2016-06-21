@@ -5,23 +5,30 @@
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
         /*[Start load users list]*/
-        dbFactory.getAPI('usuarios','').then(function (response) {
-            var users = response.data
-            var usersTrained = 0
-            $scope.usersQty = users.length
+        $scope.getUsers = function () {
+            dbFactory.getAPI('usuarios','').then(function (response) {
+                var users = response.data
+                var usersTrained = 0
+                $scope.usersQty = users.length
 
-            for (var i = 0; i < users.length; i++) {
-                usersTrained += parseInt(response.data[i].moduloA)
-                if (users[i].moduloA == '1') {
-                    users[i].examen = 'Si'
-                }else{
-                    users[i].examen = 'No'
+                for (var i = 0; i < users.length; i++) {
+                    usersTrained += parseInt(response.data[i].moduloA)
+                    if (users[i].moduloA == '1') {
+                        users[i].examen = 'Si'
+                    }else{
+                        users[i].examen = 'No'
+                    }
                 }
-            }
-            $scope.usersTrained = usersTrained
-            $scope.users = users
-        }), function (error) {
-             alert(error)
+                $scope.usersTrained = usersTrained
+                $scope.users = users
+            })
+        }
+        $scope.getUsers()
+        $scope.getQuestions = function () {
+            /*[Start load questions list]*/
+            dbFactory.getAPI('preguntas','').then(function (response) {
+                $scope.questions = response.data
+            })
         }
         /*[End load users list]*/
         /*[Start load questions list]*/
