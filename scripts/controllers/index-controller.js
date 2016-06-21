@@ -55,7 +55,7 @@
         /*[End load questions list]*/
         /*[Start load log list]*/
         dbFactory.getAPI('changeLog','').then(function (response) {
-            $scope.changes = response
+            $scope.changes = response.data
         })
         /*[End load log list]*/
     	/*tipo de usuario mockapeado*/

@@ -22,7 +22,6 @@
             <tr>
               <th>ID</th>
               <th>Elemento</th>
-              <th>Valor Anterior</th>
               <th>Nuevo Valor</th>
               <th>Fecha</th>
               <th>Usuario</th>
@@ -32,8 +31,7 @@
             <tr ng-repeat="change in changes | filter: searchText">
               <td>{{change.id}}</td>
               <td>{{change.elemento}}</td>
-              <td>{{change.valor_anterior}}</td>
-              <td>{{change.valor_actual}}</td>
+              <td>{{change.valor}}</td>
               <td>{{change.modificado}}</td>
               <td>{{change.usuario}}</td>
             </tr>
