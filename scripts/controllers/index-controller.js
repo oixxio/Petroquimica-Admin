@@ -5,8 +5,8 @@
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
 
-        dbFactory.getAPI('usuarios','').success(function (response) {
-            var users = response
+        dbFactory.getAPI('usuarios','').then(function (response) {
+            var users = response.data
             var usersTrained = 0
             $scope.usersQty = users.length
 
@@ -20,11 +20,13 @@
             }
             $scope.usersTrained = usersTrained
             $scope.users = users
-        })
-        dbFactory.getAPI('preguntas','').success(function (response) {
-           $scope.questions = response
-            dbFactory.getAPI('respuestasEmpleados','').success(function (response) {
-                var answers = response;
+        }), function (error) {
+             alert(error)
+        }
+        dbFactory.getAPI('preguntas','').then(function (response) {
+           $scope.questions = response.data
+            dbFactory.getAPI('respuestas','').then(function (response) {
+                var answers = response.data
                 var grade = 0
                 var pass = 0,fail = 0
                 for (var i = 0; i < answers.length; i += 10) {
@@ -46,7 +48,7 @@
                 $scope.perPass = (pass * 100)/(pass+fail)
             })
         })
-        dbFactory.getAPI('changeLog','').success(function (response) {
+        dbFactory.getAPI('changeLog','').then(function (response) {
             $scope.changes = response
         })
     	/*tipo de usuario mockapeado*/

@@ -42,10 +42,11 @@ switch ($method) {
  
 // excecute SQL statement
 $result = mysqli_query($link,$sql);
- 
+
 // die if SQL statement failed
 if (!$result) {
-  http_response_code(404);
+   echo $sql;
+  //http_response_code(404);
   die(mysqli_error());
 }
  

@@ -26,7 +26,7 @@
 		}).
 		when('/cambios',{
 			templateUrl: 'views/adminRegistroCambios.html'
-		});
+		}).
 		when('/login',{
 			templateUrl: 'views/adminLogin.html'
 		});

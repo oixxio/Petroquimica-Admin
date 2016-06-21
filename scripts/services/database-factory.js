@@ -11,6 +11,9 @@
         db.putAPI = function (table,key,data) {
         	return $http.put('api/api.php/'+table+'/'+key,data)
         }
+        db.postAPI = function (table,data) {
+            return $http.post('api/api.php/'+table,data)
+        }
     	return db;
     }]);
 
