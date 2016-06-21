@@ -22,6 +22,7 @@
                       ng-click="goTo('/dashboard')"></a>
                 </div>
                 <h2 style="text-align:center;color:white;">Panel de Administrador</h2>
+                <a class="log-out pull-right" ng-click="goTo('login')" href=""><b>cerrar sesión</b></a>
             </div>
         </nav>
 
@@ -52,14 +53,14 @@
                                 
                             </a>
                         </li>
-                        <li ng-style="userMenu(1)" ng-class="active4"
+<!--                         <li ng-style="userMenu(1)" ng-class="active4"
                             ng-click="goTo('usuarios');setActive(4)">
                             <a style="cursor:pointer;">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
                                 Fichas
                                 
                             </a>
-                        </li>
+                        </li> -->
                         <li ng-style="userMenu(1)" ng-class="active5"
                             ng-click="goTo('cambios');setActive(5)">
                             <a style="cursor:pointer;">
@@ -110,6 +111,16 @@ li a {
 
 .nav-sidebar .active a:hover {
     background-color: gray;
+}
+
+.log-out {
+  color: white;
+  margin-top: -32px;
+}
+
+.log-out:hover {
+  color: #ddd;
+  text-decoration: none;
 }
 
 </style>
