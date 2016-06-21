@@ -4,7 +4,7 @@
     angular.module('app.dashboard').
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
-
+        /*[Start load users list]*/
         dbFactory.getAPI('usuarios','').then(function (response) {
             var users = response.data
             var usersTrained = 0
@@ -23,8 +23,11 @@
         }), function (error) {
              alert(error)
         }
+        /*[End load users list]*/
+        /*[Start load questions list]*/
         dbFactory.getAPI('preguntas','').then(function (response) {
            $scope.questions = response.data
+           /*[Start load answers list]*/
             dbFactory.getAPI('respuestas','').then(function (response) {
                 var answers = response.data
                 var grade = 0
@@ -47,10 +50,14 @@
 
                 $scope.perPass = (pass * 100)/(pass+fail)
             })
+            /*[End load answers list]*/
         })
+        /*[End load questions list]*/
+        /*[Start load log list]*/
         dbFactory.getAPI('changeLog','').then(function (response) {
             $scope.changes = response
         })
+        /*[End load log list]*/
     	/*tipo de usuario mockapeado*/
     	switch (loginFactory.userRole()) {
     		case 'admin':

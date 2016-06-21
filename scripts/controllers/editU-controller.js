@@ -13,7 +13,7 @@
             delete obj.examen
             dbFactory.putAPI('usuarios',key,obj).then(function (response) {
                 alert("Cambios guardados correctamente")
-                
+                $location.path('/usuarios')
             }) 
         }
     }])
