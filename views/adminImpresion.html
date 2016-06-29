@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="printController" ng-init="listEmpresas()">
   <div class="col-md-12 main">          
     <div class="row page-header">
       <div class="col-md-4">
@@ -9,16 +9,16 @@
   <div class="col-md-12">
         <table id="tabla" class="tg" style="table-layout: fixed; width: 100%">
           <colgroup>
-          <col style="width: 96px">
-          <col style="width: 256px">
-          <col style="width: 105px">
-          <col style="width: 89px">
-          <col style="width: 107px">
-          <col style="width: 112px">
-          <col style="width: 43px">
-          <col style="width: 43px">
-          <col style="width: 43px">
-          <col style="width: 80px">
+          <col style="width: 76px">
+          <col style="width: 236px">
+          <col style="width: 85px">
+          <col style="width: 69px">
+          <col style="width: 87px">
+          <col style="width: 92px">
+          <col style="width: 33px">
+          <col style="width: 33px">
+          <col style="width: 33px">
+          <col style="width: 65px">
           </colgroup>
             <tr>
               <th class="tg-tarb" colspan="6">
@@ -28,7 +28,7 @@
                 <img style="float:right;" height="42px" src="img/cuidado_respon.jpg">
               </th>
               <th class="tg-tarb" colspan="4">
-                Folio: {{folio}}<br>Empresa N°: {{empresa.num}}
+                Folio: {{questions[0].examen}}<br>Empresa N°: {{empresa.num}}
               </th>
             </tr>
             <tr>
@@ -44,54 +44,30 @@
               <td class="tg-36r9" colspan="10" style="font-size: x-small;padding: 2px;border-top: none;font-weight: bold;background-color: #eee;">EL PERSONAL FIRMA BAJO CONFORMIDAD DE HABER RECIBIDO TRIPTICO DE PRIII SA Y CAPACITACION DE INDUCCION (CON UNA DURACION DE 1:30HS) EN LA SALA DE CAPACITACION DE SEGURIDAD Y MEDIO AMBIENTE - PETROQUIMICA RIO TERCERO SA</td>
             </tr>
             <tr>
-              <td class="tg-36r9" rowspan="2"><br>DNI N°</td>
-              <td class="tg-36r9" rowspan="2"><br>APELLIDO Y NOMBRES</td>
-              <td class="tg-36r9" rowspan="2"><br>FECHA DE NACIMIENTO</td>
-              <td class="tg-36r9" rowspan="2"><br>GRUPO SANGUINEO</td>
-              <td class="tg-36r9" rowspan="2"><br>ESTUDIOS FINALES</td>
-              <td class="tg-36r9" colspan="4">CAPACITADO POR FECHA</td>
-              <td class="tg-36r9" rowspan="2"><br>DATAS ULHCM</td>
+              <td class="tg-36r9" rowspan="2"><br><b>Dni N°</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Apellido Y Nombres</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Fecha De Nacimiento</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Grupo Sanguineo</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Estudios Finales</b></td>
+              <td class="tg-36r9" colspan="4"><b>Capacitado Por Fecha</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Datas ULCHM</b></td>
             </tr>
             <tr>
-              <td class="tg-36r9">(Firma y N°Leg)</td>
-              <td class="tg-36r9">DIA</td>
-              <td class="tg-36r9">MES</td>
-              <td class="tg-36r9">AÑO</td>
+              <td class="tg-36r9"><b>(Firma y N°Leg)</b></td>
+              <td class="tg-36r9"><b>Dia</b></td>
+              <td class="tg-36r9"><b>Mes</b></td>
+              <td class="tg-36r9"><b>Año</b></td>
             </tr>
-            <tr>
-              <td class="tg-36r9">34317742<br></td>
-              <td class="tg-36r9">Mugnaini, Guillermo Ariel Juan Pedro</td>
-              <td class="tg-36r9">22/04/1989</td>
-              <td class="tg-36r9">0+</td>
-              <td class="tg-36r9">Universitario</td>
+            <tr ng-repeat="user in users | filter: {examen : 'Si'}" ng-if="100 < user.fechaExamen*1000">
+              <td class="tg-36r9"><br></td>
+              <td class="tg-36r9">{{user.lastname + ", " + user.name}}</td>
+              <td class="tg-36r9">{{currentDate}}</td>
+              <td class="tg-36r9">a{{currentDatePlus}}</td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date}}</td>
               <td class="tg-36r9"></td>
-              <td class="tg-36r9">23</td>
-              <td class="tg-36r9">06</td>
-              <td class="tg-36r9">2016</td>
-              <td class="tg-36r9"></td>
-            </tr>
-            <tr>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-            </tr>
-            <tr>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
-              <td class="tg-36r9"></td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'dd'}}</td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'MM'}}</td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'yyyy'}}</td>
               <td class="tg-36r9"></td>
             </tr>
             <tr>
@@ -100,9 +76,16 @@
         </table>
   <br>      
   </div>
-
-  <div class="col-md-6 col-md-offset-3">
-    <button ng-click="$('#tabla').printElement();" id="impTablaBtn" class="btn btn-primary btn-lg btn-block">IMPRIMIR</button>
+  <div class="col-md-2 col-md-offset-3 text-right">
+    <label style="line-height:2.5;">Seleccione Empresa: </label>
+  </div> 
+  <div class="col-md-2">
+    <select class="btn btn-primary" ng-model="localidadSelected" style="width:100%;" required>
+      <option ng-repeat="localidad in localidades" value="{{localidad.localidadid}}">{{localidad.descripcion}}</option>
+    </select>
+  </div> 
+  <div class="col-md-2">
+    <button id="impTablaBtn" class="btn btn-primary">IMPRIMIR</button>
   </div> 
 </div>
 
@@ -117,10 +100,10 @@
   font-size:14px;
   padding:10px 5px;
   border-style:solid;
-  border-width:1px;
+  border-width:2px;
   overflow:hidden;
   word-break:normal;
-  border-color:#ccc;
+  border-color:#555;
   color:#333;
   background-color:#fff;
 }
@@ -130,31 +113,31 @@
   font-weight:normal;
   padding:10px 5px;
   border-style:solid;
-  border-width:1px;
+  border-width:2px;
   overflow:hidden;
   word-break:normal;
-  border-color:#ccc;
+  border-color:#555;
   color:#333;
   /*background-color:#f0f0f0;*/
 }
 .tg .tg-36r9{
-  font-size:small;
+  font-size: x-small;
   text-align:center;
   vertical-align:top
 }
 .tg .tg-tarb{
-  font-size:small;
+  font-size: x-small;
   vertical-align:top
 }
 </style>
 
 
-<script src="scripts/jquery-3.0.0.min.js"></script>
 <script src="scripts/jquery.printElement.js"></script>
 
-<!-- <script>
-  $('#impTablaBtn').on('click',function(){
-      $('#tabla').printElement();
-      alert("dasdasd");
-  }); 
-</script> -->
+ <script>
+
+$('#impTablaBtn').on('click',function(){
+    $('#tabla').printElement();
+}); 
+
+</script>

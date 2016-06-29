@@ -1,6 +1,7 @@
 (function () {
     'use strict';
 
+    /*[Start indexController]*/
     angular.module('app.dashboard').
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
@@ -218,7 +219,13 @@
             }
         }
 
+        $scope.initCurrentDate = function (view) {           
+            $scope.currentDate = new Date();
+            $scope.currentDate.setHours(0,0,0,0);
+            $scope.currentDatePlus = $scope.currentDate + 3600;
+        }
+
 
     }])
-
+    /*[End indexController]*/
 })();
