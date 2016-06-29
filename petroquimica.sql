@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2015 a las 16:06:59
--- Versión del servidor: 5.5.32
--- Versión de PHP: 5.4.19
+-- Host: localhost
+-- Generation Time: Jun 29, 2016 at 05:28 PM
+-- Server version: 5.5.49-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,101 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `petroquimica`
+-- Database: `petroquimica`
 --
-CREATE DATABASE IF NOT EXISTS `petroquimica` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `petroquimica`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cuestionario`
+-- Table structure for table `changeLog`
+--
+
+CREATE TABLE IF NOT EXISTS `changeLog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elemento` varchar(200) COLLATE utf8_bin NOT NULL,
+  `valor` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuario` varchar(200) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=68 ;
+
+--
+-- Dumping data for table `changeLog`
+--
+
+INSERT INTO `changeLog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VALUES
+(1, 'pass usuario id = 1', '456', '2016-06-16 16:42:46', 'admin\r\n'),
+(2, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0","$$hashKey":"object:1845"}', '2016-06-21 15:08:09', 'Admin'),
+(3, 'usuarios', 'Array', '2016-06-21 15:09:31', 'Admin'),
+(4, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0"}', '2016-06-21 15:09:58', 'Admin'),
+(5, 'cuestionarios', '{"pregunta":"a","respuesta1":"1","respuesta2":"1","respuesta3":"1","respCorrecta":"1","idModulo":"2"}', '2016-06-21 15:12:55', 'Admin'),
+(6, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0"}', '2016-06-21 15:23:20', 'Admin'),
+(7, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"1"}', '2016-06-21 15:23:29', 'Admin'),
+(8, 'cuestionarios', '{"pregunta":"¿Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Claro que si","respuesta2":"Por supuesto","respuesta3":"Si","respCorrecta":"1","idModulo":"2","index":"1"}', '2016-06-21 15:24:38', 'Admin'),
+(9, 'cuestionarios', '{"pregunta":"¿Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Claro que si","respuesta2":"Por supuesto","respuesta3":"Si","respCorrecta":"1","idModulo":"1","index":"1"}', '2016-06-21 15:24:51', 'Admin'),
+(10, 'preguntas', '{"pregunta":"admin","respuesta1":"2","respuesta2":"2","respuesta3":"2","respCorrecta":"1","idModulo":"2"}', '2016-06-21 15:26:07', 'Admin'),
+(11, 'usuarios', '{"user":"santi","pass":"sant","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0"}', '2016-06-21 15:50:29', 'Admin'),
+(12, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"1"}', '2016-06-21 15:50:38', 'Admin'),
+(13, 'cuestionarios', '{"pregunta":"¿Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Claro que si","respuesta2":"Por supuesto","respuesta3":"Si","respCorrecta":"1","idModulo":"3","index":"1"}', '2016-06-21 15:51:09', 'Admin'),
+(14, 'preguntas', '{"pregunta":"facu","respuesta1":"1","respuesta2":"1","respuesta3":"1","respCorrecta":"1","idModulo":"2"}', '2016-06-21 15:51:20', 'Admin'),
+(15, 'preguntas', '{"pregunta":"fede","respuesta1":"2","respuesta2":"2","respuesta3":"2","respCorrecta":"1","idModulo":"1"}', '2016-06-21 15:56:58', 'Admin'),
+(16, 'preguntas', '{"pregunta":"guille","respuesta1":"3","respuesta2":"3","respuesta3":"3","respCorrecta":"3","idModulo":"4"}', '2016-06-21 15:58:00', 'Admin'),
+(17, 'preguntas', '{"pregunta":"sergio","respuesta1":"4","respuesta2":"4","respuesta3":"44","respCorrecta":"2","idModulo":"4"}', '2016-06-21 16:04:24', 'Admin'),
+(18, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0"}', '2016-06-21 16:07:29', 'Admin'),
+(19, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"1"}', '2016-06-21 16:08:08', 'Admin'),
+(20, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0"}', '2016-06-21 16:08:50', 'Admin'),
+(21, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"1","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:22:19', 'Admin'),
+(22, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"1","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:56:00', 'Admin'),
+(23, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"3","idModulo":"1","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:56:33', 'Admin'),
+(24, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"3","idModulo":"5","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:56:53', 'Admin'),
+(25, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"5","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:57:06', 'Admin'),
+(26, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"4","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:58:31', 'Admin'),
+(27, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"4","index":"1","trigger":"VOCINA_A"}', '2016-06-28 20:59:40', 'Admin'),
+(28, 'cuestionarios', '{"pregunta":"Antes de realizar cualquier tipo de trabajo usted debe tener:","respuesta1":"Autorizacion del supervisor del sector.","respuesta2":"Autorizacion del jefe de SMA.","respuesta3":"El permiso de trabajo correspondiente.","respCorrecta":"1","idModulo":"1","index":"6","trigger":"NONE"}', '2016-06-28 20:59:56', 'Admin'),
+(29, 'cuestionarios', '{"pregunta":"Antes de realizar cualquier tipo de trabajo usted debe tener:","respuesta1":"Autorizacion del supervisor del sector.","respuesta2":"Autorizacion del jefe de SMA.","respuesta3":"El permiso de trabajo correspondiente.","respCorrecta":"2","idModulo":"1","index":"6","trigger":"NONE"}', '2016-06-28 21:00:23', 'Admin'),
+(30, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:39:01', 'Admin'),
+(31, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:41:12', 'Admin'),
+(32, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:43:45', 'Admin'),
+(33, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:44:30', 'Admin'),
+(34, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:45:56', 'Admin'),
+(35, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:46:30', 'Admin'),
+(36, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:49:33', 'Admin'),
+(37, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:53:57', 'Admin'),
+(38, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:55:37', 'Admin'),
+(39, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:58:21', 'Admin'),
+(40, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:58:43', 'Admin'),
+(41, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 13:59:52', 'Admin'),
+(42, 'cuestionarios', '{"pregunta":"Identifique el siguiente símbolo","respuesta1":"Zona habilitada para fumar","respuesta2":"Zona de riesgo","respuesta3":"Punto de encuentro","respCorrecta":"1","idModulo":"1","index":"2","trigger":"SIMBOLO"}', '2016-06-29 14:00:23', 'Admin'),
+(43, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:00:52', 'Admin'),
+(44, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:01:30', 'Admin'),
+(45, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:01:55', 'Admin'),
+(46, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:02:43', 'Admin'),
+(47, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:03:17', 'Admin'),
+(48, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:03:48', 'Admin'),
+(49, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:08:40', 'Admin'),
+(50, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:09:34', 'Admin'),
+(51, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:10:08', 'Admin'),
+(52, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:11:57', 'Admin'),
+(53, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:12:14', 'Admin'),
+(54, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:13:09', 'Admin'),
+(55, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:13:47', 'Admin'),
+(56, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:15:12', 'Admin'),
+(57, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:16:40', 'Admin'),
+(58, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:16:56', 'Admin'),
+(59, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:18:00', 'Admin'),
+(60, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:19:07', 'Admin'),
+(61, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:25:20', 'Admin'),
+(62, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:28:18', 'Admin'),
+(63, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:28:57', 'Admin'),
+(64, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:35:45', 'Admin'),
+(65, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:36:12', 'Admin'),
+(66, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"1","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:37:39', 'Admin'),
+(67, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-06-29 14:42:54', 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cuestionario`
 --
 
 CREATE TABLE IF NOT EXISTS `cuestionario` (
@@ -44,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `cuestionario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `cuestionario`
+-- Dumping data for table `cuestionario`
 --
 
 INSERT INTO `cuestionario` (`idUsuario`, `pregunta1`, `pregunta2`, `pregunta3`, `pregunta4`, `pregunta5`, `pregunta6`, `pregunta7`, `pregunta8`, `pregunta9`, `pregunta10`, `idModulo`) VALUES
@@ -53,7 +139,7 @@ INSERT INTO `cuestionario` (`idUsuario`, `pregunta1`, `pregunta2`, `pregunta3`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modulo`
+-- Table structure for table `modulo`
 --
 
 CREATE TABLE IF NOT EXISTS `modulo` (
@@ -66,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `modulo`
+-- Dumping data for table `modulo`
 --
 
 INSERT INTO `modulo` (`id`, `descripcion`, `alta`, `baja`, `modificacion`) VALUES
@@ -75,41 +161,42 @@ INSERT INTO `modulo` (`id`, `descripcion`, `alta`, `baja`, `modificacion`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `preguntas`
+-- Table structure for table `preguntas`
 --
 
 CREATE TABLE IF NOT EXISTS `preguntas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pregunta` varchar(1000) NOT NULL,
+  `pregunta` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `respuesta1` varchar(200) COLLATE utf8_bin NOT NULL,
+  `respuesta2` varchar(200) COLLATE utf8_bin NOT NULL,
+  `respuesta3` varchar(200) COLLATE utf8_bin NOT NULL,
   `respCorrecta` int(11) NOT NULL,
-  `alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `baja` datetime NOT NULL,
-  `modificacion` datetime NOT NULL,
   `idModulo` int(11) NOT NULL,
   `index` int(11) NOT NULL,
+  `trigger` varchar(500) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
--- Volcado de datos para la tabla `preguntas`
+-- Dumping data for table `preguntas`
 --
 
-INSERT INTO `preguntas` (`id`, `pregunta`, `respCorrecta`, `alta`, `baja`, `modificacion`, `idModulo`, `index`) VALUES
-(1, '¿Al escuchar la siguiente sirena, ¿Cómo debe proceder?', 1, '2014-04-25 15:46:47', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
-(2, 'dentifique el siguiente símbolo', 2, '2014-04-25 15:47:07', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 2),
-(3, '¿Si usted se encuentra en una situación de escape de gas con viento en direccion NORTE, ¿Usted debe huir hacia?', 2, '2014-04-25 15:47:54', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 3),
-(4, 'En el caso de desempeñarse como operario, ¿cuáles son los elementos de seguridad que debe tener?', 2, '2014-04-25 15:49:08', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 4),
-(5, 'En caso de emergencia usted debe:', 2, '2014-04-25 15:50:42', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 5),
-(6, 'Antes de realizar cualquier tipo de trabajo usted debe tener:', 2, '2014-04-25 15:51:11', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 6),
-(7, 'Identifique la sirena', 1, '2014-04-25 15:51:45', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 7),
-(8, '¿En cual de los siguientes tipos de alerta no se utilizan sirenas como sistema de aviso?', 1, '2014-04-25 15:52:25', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 8),
-(9, 'Puede utilizar el teléfono celular en la planta?', 2, '2014-04-25 15:53:23', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 9),
-(10, '¿Cuál de estas es la forma correcta de colocarse la máscara buco-nasal?', 0, '2014-04-25 15:53:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 10);
+INSERT INTO `preguntas` (`id`, `pregunta`, `respuesta1`, `respuesta2`, `respuesta3`, `respCorrecta`, `idModulo`, `index`, `trigger`) VALUES
+(0, 'Al escuchar la siguiente sirena, ¿Cómo debe proceder?', 'Avisar al responsable del sector más cercano', 'Evacuar la planta', 'Permanecer en su puesto de trabajo/ir a los puntos de reunión', 2, 3, 1, 'VOCINA_A'),
+(1, 'Identifique el siguiente símbolo', 'Zona habilitada para fumar', 'Zona de riesgo', 'Punto de encuentro', 1, 1, 2, 'SIMBOLO'),
+(2, 'Si usted se encuentra en una situación de escape de gas con viento en direccion NORTE, ¿Usted debe huir hacia?', 'A - NORTE', 'B - SUR', 'C - OESTE', 2, 1, 3, 'SITUACION'),
+(3, 'En el caso de desempeñarse como operario, ¿cuáles son los elementos de seguridad que debe tener?', 'Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.', 'Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.', 'Mascara buco-nasal, ropa apropiada, calzado de seguridad, anteojos de seguridad, guantes, casco.', 2, 1, 4, 'NONE'),
+(4, 'En caso de emergencia usted debe:', 'Llamar al número *333 desde cualquier teléfono interno.', 'Avisar al supervisor del sector, quien se encargara de llamar al *444.', '"Avisar al supervisor del sector, quien se encargara de llamar al *333.', 2, 1, 5, 'NONE'),
+(5, '¿Antes de realizar cualquier tipo de trabajo usted debe tener:', 'Autorizacion del supervisor del sector.', 'Autorizacion del jefe de SMA.', 'El permiso de trabajo correspondiente.', 2, 1, 6, 'NONE'),
+(6, 'Identifique la sirena', 'Emergencia.', 'Fin de emergencia.', 'Evacuación.', 1, 1, 7, 'VOCINA_B'),
+(7, '¿En cual de los siguientes tipos de alerta no se utilizan sirenas como sistema de aviso?', 'Alerta rojo.', 'Alerta verde.', 'Alerta amarillo.', 1, 1, 8, 'NONE'),
+(8, 'Puede utilizar el teléfono celular en la planta?', 'Si.', 'No.', 'Solo personal autorizado.', 2, 1, 9, 'NONE'),
+(9, '¿Cuál de estas es la forma correcta de colocarse la máscara buco-nasal?', 'Primero colocar las correas y luego el respirador.', 'Primero colocar el respirador y luego las correas.', 'Las 2 opciones anteriores son correctas.', 0, 1, 10, 'NONE');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuestas`
+-- Table structure for table `respuestas`
 --
 
 CREATE TABLE IF NOT EXISTS `respuestas` (
@@ -120,10 +207,10 @@ CREATE TABLE IF NOT EXISTS `respuestas` (
   `respuesta` int(11) NOT NULL,
   `alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=21 ;
 
 --
--- Volcado de datos para la tabla `respuestas`
+-- Dumping data for table `respuestas`
 --
 
 INSERT INTO `respuestas` (`id`, `idUsuario`, `idModulo`, `index`, `respuesta`, `alta`) VALUES
@@ -151,7 +238,53 @@ INSERT INTO `respuestas` (`id`, `idUsuario`, `idModulo`, `index`, `respuesta`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `signals`
+--
+
+CREATE TABLE IF NOT EXISTS `signals` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `index` int(3) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8_bin NOT NULL,
+  `text` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `x` int(10) NOT NULL,
+  `y` int(10) NOT NULL,
+  `z` int(10) NOT NULL,
+  `rotY` int(10) NOT NULL,
+  `icon` varchar(50) COLLATE utf8_bin NOT NULL,
+  `video` varchar(100) COLLATE utf8_bin NOT NULL,
+  `vidtmb` varchar(100) COLLATE utf8_bin NOT NULL,
+  `audio` varchar(100) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `signals`
+--
+
+INSERT INTO `signals` (`id`, `index`, `descripcion`, `text`, `x`, `y`, `z`, `rotY`, `icon`, `video`, `vidtmb`, `audio`) VALUES
+(1, 1, 'general', '<b>BIENVENIDOS</b>\\n\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>', -1, 22, -77, 91, 'Quad', 'bienvenida.mp4_x264', '1-Bienvenidos', 'Bienvenido'),
+(2, 2, 'general', '<b>IMPORTANTE</b>\\n\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>', -26, 22, -78, 88, 'Quad', '', '2-NormasDeSeguridad', ''),
+(3, 15, 'general', '<b>RECOMENDACIONES PRÁCTICAS PARA UN TRABAJO SEGURO</b>\\n\\nLas presentes recomendaciones expresan las medidas de precaución que deben adoptarse durante su tránsito, permanencia y trabajos a desarrollar en planta industrial.\\nSu conocimiento y adopción por parte de la supervisión y los operadores reduce los riesgos durante la ejecución de las tareas.', 8, 22, 48, 91, 'Quad', '', '3-RecomendacionesTrabajoSeguro', ''),
+(4, 3, 'general', '<b>ELEMENTOS DE PROTECCIÓN</b>\\n\\nAl ingresar a la unidad fabril, usted deberá contar con los siguientes <b>elementos básicos de protección personal</b> de uso obligatorio.\\n- Casco\\n- Anteojos de seguridad\\n- Calzado de seguridad\\nDebe contar también con el siguiente <b>Elemento de Protección Personal (EEP)</b></br>- Máscara buconasal con filtro de carbón activado para vapores orgánicos y gases ácidos.', -43, 22, -72, 91, 'Quad', '', '4-EEP', ''),
+(5, 4, 'general', '<b>ANTES DE INGRESAR</b>\\n\\n- Debe solicitar \\"autorización\\" o permiso en la sala de control correspondiente\\n- Debe utilizar los <b>elementos básicos de protección personal</b>\\n- Debe portar los <b>Elementos de Protección Personal (EPP)</b>', -54, 22, 31, 179, 'Quad', '', '5-AntesDeIngresar', ''),
+(6, 12, 'general', '<b>PERMISO DE TRABAJO</b>\\n\\nTodo trabajo que se efectue en la zona industrial debe realizarse munido del correspondiente <b>Permiso de Trabajo</b>.\\nEl permiso de trabajo aplica para los siguientes:\\nfrio, caliente, altura, hot—up, eléctrico, excavaciones, espacio confinado, ATS, instructivo, procedimiento, ingreso a tanques o recipientes', -16, 22, 135, 269, 'Quad', '', '6-PermisoDeTrabajo', ''),
+(7, 9, 'general', '<b>EMERGENCIA</b>\\n\\nSi usted detecta una emergencia, <b>avise al panelista o al supervisor del sector.</b> El sector es el encargado de activar el <b>sistema de aviso de alerta mediante el N° *333\\n— Fuga de gas 0 vapores téxicos\\n- Derrame de producto\\n- Principio de incendio y/o explosién\\n- Persona accidentada\\n- Persona con problemas de salud</b>', -26, 22, 66, 92, 'Quad', '', '7-Emergencia', ''),
+(8, 11, 'general', '<b>NUESTRA EMPRESA CUENTA CON SISTEMAS DE AVISO DE ALERTA ANTE EMERGENCIAS\\n\\n<b>Alerta Verde</b> > sin toque de sirena\\n<b>Alerta Amarillo</b> > con toque de sirena\\n<b>Alerta Rojo = Evacuacién</b> > con toque de sirena', -34, 22, 127, 91, 'Quad', '', '8-SistemaDeEmergencia', ''),
+(9, 16, 'general', '<b>SISTEMA DE ALERTAS</b><br/\\nPRIII S.A. cuenta con diferentes sistemas de alerta\\n<b>- Balizas Iuminosas\\n- Parlantes internos\\n- Sirenas</b>\\nLos sistemas de alerta son <b>probados todos los dias Iunes a las 11:00am</b>, salvo que se indique lo contrario', 14, 22, 12, 270, 'Quad', '', '9-SistemaDeAlertas', ''),
+(10, 13, 'general', '<b>PROTECCION BAJO CUBIERTA</b>\\n\\nAl informarse por los diferentes sistemas de alerta, debera permanecer en su puesto de trabajo o dirigirse al edificio mas cercano (punto de reunion) segun lo indicado en plane, a fin de lograr <b>proteccién bajo cubierta</b>', 68, 22, 135, 269, 'Quad', '', '10-ProteccionBajoCubierta', ''),
+(11, 5, 'general', '<b>CIRCULACION DE VEHlCULOS</b>\\n\\nLos sr transportistas o conductores de vehiculos deberan estacionarse sobre su derecha, no sobre sendas peatonales, no interfiriendo ningun ingreso/egreso, calle ni cruce.', -54, 22, 48, 122, 'Quad', '', '11-CirculacionVehiculos', ''),
+(12, 14, 'general', '<b>DURANTE UNA EMERGENCIA, usted debe:</b>\\n\\n<b>- Mantener siempre la calma</b>\\n<b>- NO correr.</b> Caminar con paso acelerado\\n<b>- NO usar lineas telefénicas</b>\\n<b>- Obedecer Ias instrucciones</b> del Lider de la evacuacién del ediﬁcio', 95, 22, 54, 183, 'Quad', 'durante_emergencia_x264', '12-DuranteEmergencia', ''),
+(13, 10, 'general', '<b>FUGA DE GAS</b>\\n\\nAnte una fuga de gas:\\n<b>- Observe Ia direccion del viento\\n- Aléjese en direccién perpendicular al viento\\n- Asegurese de portar y utilizar los elementos de proteccién personal (EPP) como la mascara buconasal con filtro de carbén activado para vapores organicos y gases acidos</b>', -38, 22, 81, 180, 'Quad', 'Escape_de_gas_2_x264', '13-FugaDeGas', '00---Fuga_d_gas_x264 audio'),
+(14, 7, 'general', '<b>COLOCACION DE MASCARA BUCONASAL</b>\\n\\nSiga las instrucciones detalladas para la correcta colocacién de la mascara buconasal y utilicela siempre que sea indicado.\\nRecuerde portar la mascara en todo momento mientras trabaja en exposicién a gases o vapores téxicos.', -67, 22, 98, 0, 'Quad', '46---colocacion-mascara-buconasal-2_1_x264', '16-EnCasoAccidente', 'Colocacion_mascara_buconasal_AUDIO'),
+(15, 18, 'general', '<b>iGRACIAS!\\n\\nGracias a su colaboracién es posible resguardar la seguridad e integridad de todos y cuidar nuestro medio ambiente.<b/>', -23, 22, -37, 273, 'Quad', '', '15-Gracias', ''),
+(16, 8, 'general', '<b>PROCEDIMIENTO EN CASO DE ACCIDENTE<b/>\\n\\nRecuerde siempre:\\n<b>— Mantener siempre la calma<b/>\\n<b>— NO correr.<b/> Caminar con paso acelerado\\n<b>— NO usar lineas telefénicas<b/>\\n<b>— Obedecer Ias instrucciones<b/> del Lider de la evacuacién del edificio', -51, 22, 108, 105, 'Quad', 'En caso de accidente', '16-EnCasoAccidente', ''),
+(17, 17, 'general', '<b>SE ENCUENTRA PROHIBIDO\\n\\n- Trabajar sin permiso de trabajo\\n- Utilizar teléfonos celulares no autorizados\\n- Usar maquinas fotograficas no autorizadas, MP3s o equipos de musica\\n- Ingresar con bebidas alcohélicas</b>', -10, 22, 4, 180, 'Quad', '', '17-Prohibido', ''),
+(18, 6, 'general', '<b>INCUMPLIMIENTO DE NORMAS\\n\\nEl incumplimiento de las normas y disposiciones pone en riesgo la seguridad de todos.</b>', -69, 22, 82, 0, 'Quad', '', '18-Incumplimiento', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -167,11 +300,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=352 ;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`, `name`, `lastname`, `legajo`, `puesto`, `moduloA`) VALUES
-(1, 'santi', 'santi123', 'Santiago', 'Roca', '9999', 'GERENCIA OPERACIONES', 1),
+(1, 'santi', 'santi123', 'Santiago', 'Roca', '9999', 'GERENCIA OPERACIONES', 0),
 (2, 'reyrobertoelias', 'reyrobertoelias123', 'Roberto Elias ', 'Rey', '31', 'MANTENIMIENTO', 0),
 (3, 'paulucciluisalberto', 'paulucciluisalberto123', 'Luis Alberto ', 'Paulucci', '75', 'GERENCIA OPERACIONES', 0),
 (4, 'tobanellijuanjose', 'tobanellijuanjose123', 'Juan Jose ', 'Tobanelli', '97', 'PROCESOS', 0),

@@ -17,7 +17,12 @@
         link.getU = function () {
              return user;
         }
-    	
+    	link.updateJsonQ = function () {
+            return $http.get('api/updateJsonCuestionario.php/');
+        }
+        link.updateJsonS = function () {
+            return $http.get('api/updateJsonFichas.php/');
+        }
     	return link;
     }]);
 

@@ -45,8 +45,7 @@ $result = mysqli_query($link,$sql);
 
 // die if SQL statement failed
 if (!$result) {
-   echo $sql;
-  //http_response_code(404);
+  http_response_code(404);
   die(mysqli_error());
 }
  
