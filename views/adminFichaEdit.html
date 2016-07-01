@@ -1,0 +1,73 @@
+<div ng-controller="editUController">
+  <div class="col-md-12 main">          
+    <div class="row page-header">
+      <div class="col-md-12">
+        <h1>Editar Ficha ({{fData.id}})</h1>
+      </div><!-- /.col-md-12 -->   
+    </div><!-- /.row page-header -->
+  </div><!-- /.col-md-12 main -->
+  <div class="container-fluid"><!--Container-->
+    <br><br>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label>Index</label>
+            <input type="text" class="form-control" ng-model="fData.index">
+          </div> 
+          <div class="form-group">
+            <label>Descripcion</label>
+            <input type="text" class="form-control" ng-model="fData.descripcion">
+          </div>                 
+          <div class="form-group">
+            <label>Texto</label>
+            <textarea rows="8" type="text" class="form-control" ng-model="fData.text">
+            </textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>X</label>
+                <input type="text" class="form-control" ng-model="fData.x">
+              </div>
+            </div>
+            <div class="col-md-3">  
+              <div class="form-group">
+                <label>Y</label>
+                <input type="text" class="form-control" ng-model="fData.y">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Z</label>
+                <input type="text" class="form-control" ng-model="fData.z">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>rotY</label>
+                <input type="text" class="form-control" ng-model="fData.rotY">
+              </div>
+            </div>            
+          </div>
+          <div class="form-group">
+            <label>Video</label>
+            <input type="text" class="form-control" ng-model="fData.video">
+          </div>
+          <div class="form-group">
+            <label>vidtmb</label>
+            <input type="text" class="form-control" ng-model="fData.vidtmb">
+          </div> 
+          <div class="form-group">
+            <label>Audio</label>
+            <input type="text" class="form-control" ng-model="fData.audio">
+          </div>                                                        
+
+          <br>                                        
+          <button type="submit" class="btn btn-primary btn-block" ng-click="saveFData(fData)"><b>Guardar cambios</b></button>
+        </form>      
+      </div>
+    </div><!--/.row-->
+    <br><br><br>
+  </div><!--/Container-->
+</div>   
