@@ -1,4 +1,4 @@
-<div ng-controller="printController" ng-init="listEmpresas()">
+<div ng-controller="printController" ng-init="listEmpresas();checkLoggedIn()">
   <div class="col-md-12 main">          
     <div class="row page-header">
       <div class="col-md-4">
@@ -40,7 +40,7 @@
                 <img style="float:right;" height="42px" src="img/cuidado_respon.jpg" style="padding:10px 5px;">
               </th>
               <th class="tg-tarb" colspan="4" style=";padding:10px 5px;">
-                Folio: {{questions[0].examen}}<br>Empresa N°: <b style="font-size:medium;">{{empresaSelected}}</b>
+                Folio:<br>Empresa: <b style="font-size:medium;">{{empresaSelected}}</b>
               </th>
             </tr>
             <tr>
@@ -71,7 +71,7 @@
               <td class="tg-36r9"><b>Año</b></td>
             </tr>
             <!-- En angular e multiplica el timestamp por 1000 porque el timestamps de la base de datos no considera milisegs-->
-            <tr ng-repeat="user in users | filter: {examen:'Si', empresa: empresaSelected}" ng-if="(fechaHoy < user.fechaExamen)" style="text-align:center;">
+            <tr ng-repeat="user in users | filter: {examen:'Si', empresa: empresaSelected, fechaExamen: fechaHoy}" style="text-align:center;">
               <td class="tg-36r9">{{user.DNI}}</td>
               <td class="tg-36r9">{{user.lastname + ", " + user.name}}</td>
               <td class="tg-36r9">{{user.fechaNac}}</td>
@@ -89,14 +89,13 @@
         </table>
   <br>      
   </div>
-<!--   <div class="col-md-3 text-right">
+  <div class="col-md-3 text-right">
     <label style="line-height:3;">Fecha: </label>
   </div> 
   <div class="col-md-2">
     <input class="btn btn-primary btn-block" type="date" ng-model="todayTimeStamp" ng-change="listEmpresas()">
-    {{todayTimeStamp}}
-  </div>  -->
-  <div class="col-md-2 text-right">
+  </div> 
+  <div class="col-md-1 text-right">
     <label style="line-height:3;">Empresa: </label>
   </div> 
   <div class="col-md-2">

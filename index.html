@@ -22,7 +22,7 @@
                       ng-click="goTo('/dashboard')"></a>
                 </div>
                 <h2 style="text-align:center;color:white;">Panel de Administrador</h2>
-                <a class="btn log-out pull-right" ng-click="goTo('/')"><b>cerrar sesión</b></a>
+                <a class="btn log-out pull-right" ng-click="logged = false;goTo('/');"><b>cerrar sesión</b></a>
             </div>
         </nav>
 
@@ -102,7 +102,9 @@
   <script src="scripts/controllers/editU-controller.js"></script>
   <script src="scripts/controllers/print-controller.js"></script>
   <script src="scripts/controllers/fichas-controller.js"></script>
-  <script src="scripts/controllers/editF-controller.js"></script>  
+  <script src="scripts/controllers/editF-controller.js"></script>
+  <script src="scripts/controllers/addU-controller.js"></script>
+  <script src="scripts/controllers/login-controller.js"></script>    
   <script src="scripts/services/login-factory.js"></script>
   <script src="scripts/services/database-factory.js"></script>
   <script src="scripts/services/link-factory.js"></script>
@@ -127,7 +129,7 @@ li a {
 
 .log-out {
   color: white;
-  margin-top: -32px;
+  margin-top: -43px;
 }
 
 .log-out:hover {

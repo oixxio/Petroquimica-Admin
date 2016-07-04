@@ -5,6 +5,7 @@
     angular.module('app.dashboard').
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
+
         /*[Start load users list]*/
         $scope.getUsers = function () {
             dbFactory.getAPI('usuarios','').then(function (response) {
@@ -14,6 +15,7 @@
                 var usersQtyInt = 0;
                 var usersQtyExt = 0;
 
+                
                 //Cantidad de Empleados
                 $scope.usersQty = users.length;
 
@@ -269,6 +271,37 @@
                     break;
             }
         }
+
+
+        //START Login Security
+        $scope.logIn = function (loginAttempt) {
+            /*[Start load questions list]*/
+            dbFactory.getAPI('admins','').then(function (response) {
+                $scope.admins = response.data
+
+                for (var i = 0; i < $scope.admins.length; i++) {
+                    if (loginAttempt.user == $scope.admins[i].user) {
+                        if (loginAttempt.pass == $scope.admins[i].pass) {
+                            $scope.logged = true;
+                            $location.path('/dashboard');
+                        } else {
+                            $scope.logged = false;
+                        }
+                    }
+                }
+                if ($scope.logged != true) { alert("Usuario/Contraseña incorrectos");}
+
+            })
+        }
+        //END Login Security
+
+        //START Chequea si está loggeado o no
+        $scope.checkLoggedIn = function () {
+            if ($scope.logged != true) { 
+                $location.path('/'); 
+            }
+        }
+        //END Chequea si está loggeado o no
 
     }])
     /*[End indexController]*/

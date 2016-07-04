@@ -4,6 +4,7 @@
     angular.module('app.dashboard').
     controller('editUController', ['$scope','$window','$location','$http','logFactory','dbFactory','linkFactory',
     			function($scope,$window,$location,$http,logFactory,dbFactory,linkFactory){
+                  
         $scope.fData = linkFactory.getF();    
 
         $scope.saveFData = function (obj) {
