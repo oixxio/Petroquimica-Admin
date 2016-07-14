@@ -12,9 +12,11 @@
             var key = obj.id
             delete obj.id
             dbFactory.putAPI('preguntas',key,obj).then(function (response) {
-                alert("Cambios guardados correctamente")
-                logFactory.set('cuestionarios',obj,'Admin')
-                $location.path('/cuestionarios')
+                linkFactory.updateJsonQ().then(function () {
+                     alert("Cambios guardados correctamente")
+                    logFactory.set('cuestionarios',obj,'Admin')
+                    $location.path('/cuestionarios')
+                });                
             }) 
         }
     }])

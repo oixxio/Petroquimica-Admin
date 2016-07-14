@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
+<<<<<<< HEAD:Petro+signals.sql
 -- Generation Time: Jul 01, 2016 at 10:32 AM
+=======
+-- Generation Time: Jun 29, 2016 at 05:28 PM
+>>>>>>> 2423895a5b1d5e31236046eb1ff2bc4aa87cba64:petroquimica.sql
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
