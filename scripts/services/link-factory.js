@@ -5,6 +5,8 @@
     	var link = {};
     	var question = {}
         var user = {}
+        var ficha = {}
+
         link.setQEdit = function (Q) {
         	 question = Q 
         }
@@ -17,6 +19,12 @@
         link.getU = function () {
              return user;
         }
+        link.getF = function () {
+             return ficha;
+        } 
+        link.setFEdit = function (F) {
+             ficha = F 
+        }        
     	link.updateJsonQ = function () {
             return $http.get('api/updateJsonCuestionario.php/');
         }

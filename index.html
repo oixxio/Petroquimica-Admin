@@ -22,7 +22,7 @@
                       ng-click="goTo('/dashboard')"></a>
                 </div>
                 <h2 style="text-align:center;color:white;">Panel de Administrador</h2>
-                <a class="btn log-out pull-right" ng-click="goTo('/')"><b>cerrar sesión</b></a>
+                <a class="btn log-out pull-right" ng-click="logged = false;goTo('/');"><b>cerrar sesión</b></a>
             </div>
         </nav>
 
@@ -53,14 +53,21 @@
                                 
                             </a>
                         </li>
-<!--                         <li ng-style="userMenu(1)" ng-class="active4"
-                            ng-click="goTo('usuarios');setActive(4)">
+                        <li ng-style="userMenu(1)" ng-class="active4"
+                            ng-click="goTo('fichas');setActive(4)">
                             <a style="cursor:pointer;">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
                                 Fichas
                                 
                             </a>
-                        </li> -->
+                        </li>
+                        <li ng-style="userMenu(1)" ng-class="active6"
+                            ng-click="goTo('impresion');setActive(6)">
+                            <a style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 
+                                Impresion
+                            </a>
+                        </li>                          
                         <li ng-style="userMenu(1)" ng-class="active5"
                             ng-click="goTo('cambios');setActive(5)">
                             <a style="cursor:pointer;">
@@ -77,7 +84,8 @@
             </div>
         </div>
   </body>
-  <script src="bower_components/jQuery/dist/jquery.js"></script>
+  <!-- <script src="bower_components/jQuery/dist/jquery.js"></script> -->
+  <script src="scripts/jquery-3.0.0.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -92,10 +100,16 @@
   <script src="scripts/controllers/editQ-controller.js"></script>
   <script src="scripts/controllers/addQ-controller.js"></script>
   <script src="scripts/controllers/editU-controller.js"></script>
+  <script src="scripts/controllers/print-controller.js"></script>
+  <script src="scripts/controllers/fichas-controller.js"></script>
+  <script src="scripts/controllers/editF-controller.js"></script>
+  <script src="scripts/controllers/addU-controller.js"></script>
+  <script src="scripts/controllers/login-controller.js"></script>    
   <script src="scripts/services/login-factory.js"></script>
   <script src="scripts/services/database-factory.js"></script>
   <script src="scripts/services/link-factory.js"></script>
   <script src="scripts/services/log-factory.js"></script>
+
 </html>
 
 
@@ -115,7 +129,7 @@ li a {
 
 .log-out {
   color: white;
-  margin-top: -32px;
+  margin-top: -43px;
 }
 
 .log-out:hover {

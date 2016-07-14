@@ -4,18 +4,16 @@
     angular.module('app.dashboard').
     controller('editUController', ['$scope','$window','$location','$http','logFactory','dbFactory','linkFactory',
     			function($scope,$window,$location,$http,logFactory,dbFactory,linkFactory){
-               
-        $scope.uData = linkFactory.getU();
-        $scope.userId = linkFactory.getU().id;        
+                  
+        $scope.fData = linkFactory.getF();    
 
-        $scope.saveUData = function (obj) {
+        $scope.saveFData = function (obj) {
             var key = obj.id
             delete obj.id
-            delete obj.examen
-            dbFactory.putAPI('usuarios',key,obj).then(function (response) {
+            dbFactory.putAPI('signals',key,obj).then(function (response) {
                 alert("Cambios guardados correctamente")
-                logFactory.set('usuarios',obj,'Admin')
-                $location.path('/usuarios')
+                logFactory.set('signals',obj,'Admin')
+                $location.path('/fichas')
             }) 
         }
     }])

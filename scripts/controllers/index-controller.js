@@ -1,25 +1,55 @@
 (function () {
     'use strict';
 
+    /*[Start indexController]*/
     angular.module('app.dashboard').
     controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
+
         /*[Start load users list]*/
         $scope.getUsers = function () {
             dbFactory.getAPI('usuarios','').then(function (response) {
-                var users = response.data
-                var usersTrained = 0
-                $scope.usersQty = users.length
+                var users = response.data;
+                var usersTrained = 0;
+                var usersTrainedExt = 0;
+                var usersQtyInt = 0;
+                var usersQtyExt = 0;
+
+                
+                //Cantidad de Empleados
+                $scope.usersQty = users.length;
 
                 for (var i = 0; i < users.length; i++) {
-                    usersTrained += parseInt(response.data[i].moduloA)
+                    if (users[i].empresa == "PRIII" || users[i].empresa == "") {
+                        usersQtyInt++;
+                    } else {
+                        usersQtyExt++;
+                    }
+                    //Determinacion de campo 'Examen'
                     if (users[i].moduloA == '1') {
                         users[i].examen = 'Si'
-                    }else{
+                    } else {
                         users[i].examen = 'No'
                     }
+                    //Determinacion de campo 'examenRealizoStr'
+                    if (users[i].examenRealizado == '1') {
+                        users[i].examenRealizadoStr = 'Si'
+                    } else {
+                        users[i].examenRealizadoStr = 'No'
+                    }
+                    //Cantidad de examenes realizados
+                    if (users[i].empresa == "PRIII") {
+                        usersTrained += parseInt(users[i].examenRealizado);
+                    } else {
+                        usersTrainedExt += parseInt(users[i].examenRealizado);
+                    }
                 }
+                
+                $scope.usersQtyInt = usersQtyInt;
+                $scope.usersQtyExt = usersQtyExt;
+
                 $scope.usersTrained = usersTrained
+                $scope.usersTrainedExt = usersTrainedExt
                 $scope.users = users
             })
         }
@@ -28,9 +58,15 @@
             /*[Start load questions list]*/
             dbFactory.getAPI('preguntas','').then(function (response) {
                 $scope.questions = response.data
+                alert(JSON.stringify(response.data))
             })
         }
         /*[End load users list]*/
+        //Start fichas load
+        dbFactory.getAPI('signals','').then(function (response) {
+            $scope.signals = response.data
+        })
+        //End fichas load
         /*[Start load questions list]*/
         dbFactory.getAPI('preguntas','').then(function (response) {
            $scope.questions = response.data
@@ -38,24 +74,43 @@
             dbFactory.getAPI('respuestas','').then(function (response) {
                 var answers = response.data
                 var grade = 0
-                var pass = 0,fail = 0
-                for (var i = 0; i < answers.length; i += 10) {
-                    grade = 0;
-                    for (var j = 0; j < 10; j++) {
-                        if(answers[i+j].respuesta == $scope.questions[j].respCorrecta){
-                            grade++
+                var pass = 0, passExt = 0, fail = 0, failExt = 0;
+                var answerIndex;
+
+                for (var i = 0; i < 5; i++) {
+                    if ($scope.users[i].examenRealizado == 1) {
+                        grade = 0;
+                        for (var j = 0; j < answers.length; j++) {
+                            if ($scope.users[i].id == answers[j].idUsuario) {
+                                answerIndex = parseInt(answers[j].index) - 1;
+                                if(answers[j].respuesta == $scope.questions[answerIndex].respCorrecta){
+                                    grade++;
+                                }
+                            }
+                        }
+                        if(grade >= 8){
+                            if ($scope.users[i].empresa == "PRIII") {
+                                pass += 1
+                            } else {
+                                passExt += 1
+                            }
+                        }else{
+                            if ($scope.users[i].empresa == "PRIII") {
+                                fail += 1
+                            } else {
+                                failExt += 1
+                            }
                         }
                     }
-                    if (grade >= 7){
-                        pass += 1
-                    }else{
-                        fail += 1
-                    }
                 }
+
                 $scope.pass = pass;
                 $scope.fail = fail;
+                $scope.passExt = passExt;
+                $scope.failExt = failExt;                
+                $scope.perPass = (pass * 100)/(pass+fail);
+                $scope.perPassExt = (passExt * 100)/(passExt+failExt);
 
-                $scope.perPass = (pass * 100)/(pass+fail)
             })
             /*[End load answers list]*/
         })
@@ -219,6 +274,36 @@
         }
 
 
-    }])
+        //START Login Security
+        $scope.logIn = function (loginAttempt) {
+            /*[Start load questions list]*/
+            dbFactory.getAPI('admins','').then(function (response) {
+                $scope.admins = response.data
+                alert(JSON.stringify(response.data))
+                for (var i = 0; i < $scope.admins.length; i++) {
+                    if (loginAttempt.user == $scope.admins[i].user) {
+                        if (loginAttempt.pass == $scope.admins[i].pass) {
+                            $scope.logged = true;
+                            $location.path('/dashboard');
+                        } else {
+                            $scope.logged = false;
+                        }
+                    }
+                }
+                if ($scope.logged != true) { alert("Usuario/Contraseña incorrectos");}
 
+            })
+        }
+        //END Login Security
+
+        //START Chequea si está loggeado o no
+        $scope.checkLoggedIn = function () {
+            if ($scope.logged != true) { 
+                $location.path('/'); 
+            }
+        }
+        //END Chequea si está loggeado o no
+
+    }])
+    /*[End indexController]*/
 })();

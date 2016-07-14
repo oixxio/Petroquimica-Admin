@@ -1,28 +1,81 @@
-<div class="background"></div>
-<br><br><br><br><br><br><br><br><br>
-<div class="login-block">
-  <form class="form-horizontal">
-    <h1>Bienvenido</h1>
-    <br>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Usuario">
-    </div>      
-    <div class="form-group">
-      <input type="password" class="form-control"  placeholder="Contraseña">
+<div class="background" ng-init="getQuestions()"></div>
+<div class="background-color"></div>
+<div class="row">
+  <div ng-controller="addUController" class="col-md-4">
+    <form class="form-horizontal">
+      <h2>Bienvenido Nuevo usuario</h2>
+      <br>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.user" placeholder="Usuario" required>
+      </div>  
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.name" placeholder="Nombre" required>
+      </div>      
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.lastname" placeholder="Apellido" required>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" ng-model="newU.pass" placeholder="Contraseña" required>
+      </div>  
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.DNI" placeholder="DNI" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.legajo" placeholder="Legajo" required>
+      </div>
+      <div class="form-group input-group">
+        <span class="input-group-addon">Fecha Nac.</span>
+        <input type="date" class="form-control" ng-model="newU.fechaNac" required>
+      </div>      
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.grupoSang" placeholder="Grupo Sanguíneo (ej: '0+')" required>
+      </div>        
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.estudiosFinales" placeholder="Estudios Finales (ej: 'Secundario')" required>
+      </div>  
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.empresa" placeholder="Empresa (ej: 'PRIII')" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="newU.puesto" placeholder="Puesto" required>
+      </div>                   
+      <br>
+      <button type="submit" class="btn btn-pr3 btn-block" ng-click="addUData(newU);newU = null"><b>Crear nuevo usuario</b></button>
+    </form>  
+  </div>
+  <div class="col-md-1" style="font-size:0px; height:800px;">a</div>
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <br><br><br><br><br><br><br><br><br>
+    <div>
+      <form class="form-horizontal login-block" ng-controller="loginController">
+        <h2><span class="glyphicon glyphicon-lock"></span> Bienvenido ADMIN</h2>
+        <br>    
+         <div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Usuario" ng-model="userAttempt.user" required>
+          </div>      
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Contraseña" ng-model="userAttempt.pass" required>
+          </div>
+          <br>
+          <button ng-click="logIn(userAttempt)" type="submit" class="btn btn-pr3 btn-block"><b>Ingresar</b></button>
+        </div>
+        <br><br>
+        <div style="text-align:center;">
+          <img width="150px" src="img/logo.png">
+        </div>
+      </form>      
     </div>
-    <br>                                        
-    <button ng-click="goTo('/dashboard');" type="submit" class="btn btn-primary btn-block"><b>Ingresar</b></button>
-    <br><br>
-    <div style="text-align:center;">
-      <img width="150px" src="img/logo.png">
-    </div>
-  </form>      
-</div>
-
+  </div><!-- .col-md-6 -->
+</div><!-- .row -->    
 
 <style>
 
-h1 {
+h2 {
   font-size: 40px;
   text-align: center;
   color: white;
@@ -41,12 +94,40 @@ h1 {
   background-size:cover
 }
 
+.background-color {
+  position:fixed;
+  top:0;
+  left:50%;
+  height:100%;
+  width:100%;
+  background-color: black;
+  opacity: 0.1;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover
+}
+
+.btn-pr3 {
+  color: #fff;
+  background-color: #028081;
+  border-color: #016869;
+}
+
+
+.btn-pr3:hover {
+  color: #fff;
+  background-color: #005E5F;
+  border-color: #016869;
+}
+
 .login-block {
-  position: fixed;
-  display: block;
-  left: 50%;
-  width: 400px;
-  margin-left: -200px;
+  z-index: 20;
+  //position: fixed;
+  //display: block;
+  //left: 50%;
+  //width: 400px;
+  //margin-left: -200px;
 }
 
 .sidebar, .navbar {

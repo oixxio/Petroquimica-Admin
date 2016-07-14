@@ -1,0 +1,121 @@
+<div ng-controller="printController" ng-init="listEmpresas();checkLoggedIn()">
+  <div class="col-md-12 main">          
+    <div class="row page-header">
+      <div class="col-md-4">
+        <h2>Impresión</h2>
+      </div><!-- /.col-md-2 -->
+    </div><!-- /.row page-header-->
+  </div>
+  <div class="col-md-12">
+        <table id="tabla" class="tg"
+        style="
+        table-layout: fixed;
+        width: 100%;
+        font-family:'Helvetica Neue';
+        font-size:14px;
+        border-style:solid;
+        border-width:2px;
+        overflow:hidden;
+        word-break:normal;
+        border-color:black;
+        color:#333;
+        ">
+          <colgroup>
+          <col style="width: 76px">
+          <col style="width: 236px">
+          <col style="width: 85px">
+          <col style="width: 69px">
+          <col style="width: 87px">
+          <col style="width: 92px">
+          <col style="width: 33px">
+          <col style="width: 33px">
+          <col style="width: 33px">
+          <col style="width: 65px">
+          </colgroup>
+            <tr>
+              <th class="tg-tarb" colspan="6" style="padding:10px 5px;">
+                <img style="float:left;" height="42px" src="img/logo.png" style="padding:10px 5px;">
+                <label style="margin-left: 190px;margin-top: 13px;">SEGURIDAD Y MEDIO AMBIENTE</label>
+                <img style="float:right;" height="42px" src="img/system_certif.jpg" style="padding:10px 5px;">
+                <img style="float:right;" height="42px" src="img/cuidado_respon.jpg" style="padding:10px 5px;">
+              </th>
+              <th class="tg-tarb" colspan="4" style=";padding:10px 5px;">
+                Folio:<br>Empresa: <b style="font-size:medium;">{{empresaSelected}}</b>
+              </th>
+            </tr>
+            <tr>
+              <td class="tg-36r9" colspan="10" style="font-size: x-large;font-weight: bold;padding: 0;background-color: #eee;text-align:center">CAPACITACION DE INDUCCION</td>
+            </tr>
+            <tr>
+              <td class="tg-tarb" colspan="10" style="font-size: x-small;padding: 2px;border-bottom: none;">PETROQUIMICA RIO TERCERO SA, QUE CUENTA CON UN SISTEMA INTEGRADO DE GESTION CERTIFICADO EN LAS NORMAS ISO 9001:2008, ISO 14001:2004, OHSAS 18001:2007 Y ADHIERE AL PROGRAMA CUIDADO RESPONSABLE DEL MEDIO AMBIENTE, DEJA BAJO REGISTRO QUE:</td>
+            </tr>
+            <tr>
+              <td class="tg-tarb" colspan="10" style="font-size: x-small;padding: 2px;border-top: none;">EL PERSONAL QUE SE DETALLA A CONTINUACION, HA RECIBIDO CAPACITACION EN MATERIA DE SEGURIDAD Y MEDIO AMBIENTE: MEDIDAS PREVENTIVAS TENDIENTES A EVITAR INCIDENTES AL MEDIO AMBIENTE, LAS PERSONAS Y ENFERMEDADES PROFESIONALES, DE ACUERDO A LAS CARACTERISTICAS Y RIESGOS PROPIOS Y ESPECIFICOS DE LAS TAREAS QUE DESARROLLA PERTENECIENTE A LA EMPRESA <b style="font-size:medium;">{{empresaSelected}}</b> EN PRIII SA (OBLIGACION DE PORTAR Y USAR ELEMENTOS DE PROTECCION PERSONAL - RESPETAR LOS PROCEDIMIENTOS DE PERMISOS DE TRABAJOS: EN FRIO-EN CALIENTE-INGRESOS A ESPACIOS CONFINADOS-HOT-TAP-TRABAJOS EN ALTURA-ELECTRICO / PROHIBICION DE: FUMAR EN LA PLANTA / USO DE CELULARES / INTERVENIR EQUIPOS / INSTALACIONES SIN AUTORIZACION ESCRITA / USO DE MAQUINAS FOTOGRAFICAS / LA INGESTION DE ALIMENTOS EN AREAS DE PROCESO - CONSIDERAR POTENCIALMENTE CARGADO Y CON PRESION UNA CAÑERIA O SISTEMA QUE SE VA A INTERVENIR, A FIN DE UTILIZAR TODOS LOS ELEMENTOS DE PROTECCION PERSONAL NECESARIOS QUE CORRESPONDAN - SISTEMAS DE AVISO DE ALERTAS ANTE EMERGENCIAS - CODIGO SIRENA - VELOCIDAD MÁX. PERMITIDA 20Km/h - REVISE LOS ELEMENTOS DE TRABAJO Y DE SEGURIDAD A FIN DE DETECTAR CONDICIONES INSEGURAS, INFORMELAS A SU SUPERVISION - NO REALICE ACTITUDES INSEGURAS)</td>
+            </tr>
+            <tr>
+              <td class="tg-36r9" colspan="10" style="font-size: x-small;padding: 2px;border-top: none;font-weight: bold;background-color: #eee;">EL PERSONAL FIRMA BAJO CONFORMIDAD DE HABER RECIBIDO TRIPTICO DE PRIII SA Y CAPACITACION DE INDUCCION (CON UNA DURACION DE 1:30HS) EN LA SALA DE CAPACITACION DE SEGURIDAD Y MEDIO AMBIENTE - PETROQUIMICA RIO TERCERO SA</td>
+            </tr>
+            <tr style="text-align:center;">
+              <td class="tg-36r9" rowspan="2"><br><b>Dni N°</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Apellido Y Nombres</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Fecha De Nacimiento</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Grupo Sanguineo</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Estudios Finales</b></td>
+              <td class="tg-36r9" colspan="4"><b>Capacitado Por Fecha</b></td>
+              <td class="tg-36r9" rowspan="2"><br><b>Datas ULCHM</b></td>
+            </tr>
+            <tr style="text-align:center;">
+              <td class="tg-36r9"><b>(Firma y N°Leg)</b></td>
+              <td class="tg-36r9"><b>Dia</b></td>
+              <td class="tg-36r9"><b>Mes</b></td>
+              <td class="tg-36r9"><b>Año</b></td>
+            </tr>
+            <!-- En angular e multiplica el timestamp por 1000 porque el timestamps de la base de datos no considera milisegs-->
+            <tr ng-repeat="user in users | filter: {examen:'Si', empresa: empresaSelected, fechaExamen: fechaHoy}" style="text-align:center;">
+              <td class="tg-36r9">{{user.DNI}}</td>
+              <td class="tg-36r9">{{user.lastname + ", " + user.name}}</td>
+              <td class="tg-36r9">{{user.fechaNac}}</td>
+              <td class="tg-36r9">{{user.grupoSang}}</td>
+              <td class="tg-36r9">{{user.estudiosFinales}}</td>
+              <td class="tg-36r9"></td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'dd'}}</td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'MM'}}</td>
+              <td class="tg-36r9">{{user.fechaExamen*1000 | date:'yyyy'}}</td>
+              <td class="tg-36r9"></td>
+            </tr>
+            <tr>
+              <td class="tg-tarb" colspan="10" style="font-size: x-small;padding: 2px;border-top: none;font-weight: bold;background-color: #eee;">NOTA: SIEMPRE QUE SE REALICE CAPACITACION AL PERSONAL DEBE SER COMPLETADO ESTE RG CON TODOS LOS DATOS QUE SE SOLICITEN Y LUEGO DEBE SER ASENTADO EN EL SISTEMA DATASUL HCM A FIN DE PODER CORROBORAR DESDE EL ITEM RRHH - RESPONSABILIDAD SOCIAL - SEGURIDAD DE TRABAJO - MANTENIMIENTO - PERSONAL EXTERNO - PERSONA FÍSICA Y PERSONA EXTERNA</td>
+            </tr>
+        </table>
+  <br>      
+  </div>
+  <div class="col-md-3 text-right">
+    <label style="line-height:3;">Fecha: </label>
+  </div> 
+  <div class="col-md-2">
+    <input class="btn btn-primary btn-block" type="date" ng-model="todayTimeStamp" ng-change="listEmpresas()">
+  </div> 
+  <div class="col-md-1 text-right">
+    <label style="line-height:3;">Empresa: </label>
+  </div> 
+  <div class="col-md-2">
+    <select class="btn btn-primary btn-block" ng-model="empresaSelected" style="width:100%;">
+      <option ng-repeat="empresa in empresas" value="{{empresa}}">{{empresa}}</option>
+    </select>
+  </div>  
+  <div class="col-md-2">
+    <button id="impTablaBtn" class="btn btn-primary btn-block">Imprimir</button>
+  </div> 
+</div>
+
+
+
+
+<script src="scripts/jquery.printElement.js"></script>
+<script>
+
+$('#impTablaBtn').on('click',function(){
+    $('#tabla').printElement();
+}); 
+
+</script>

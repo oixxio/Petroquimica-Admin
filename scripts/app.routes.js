@@ -24,6 +24,15 @@
 	    when('/aplicaciones',{
 			templateUrl: 'views/adminAplicaciones.html'
 		}).
+	    when('/impresion',{
+			templateUrl: 'views/adminImpresion.html'
+		}).	
+	    when('/fichas',{
+			templateUrl: 'views/adminFichas.html'
+		}).		
+	    when('/fichaEdit',{
+			templateUrl: 'views/adminFichaEdit.html'
+		}).				
 		when('/cambios',{
 			templateUrl: 'views/adminRegistroCambios.html'
 		});
