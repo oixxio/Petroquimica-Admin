@@ -58,6 +58,7 @@
             /*[Start load questions list]*/
             dbFactory.getAPI('preguntas','').then(function (response) {
                 $scope.questions = response.data
+                alert(JSON.stringify(response.data))
             })
         }
         /*[End load users list]*/
@@ -278,7 +279,7 @@
             /*[Start load questions list]*/
             dbFactory.getAPI('admins','').then(function (response) {
                 $scope.admins = response.data
-
+                alert(JSON.stringify(response.data))
                 for (var i = 0; i < $scope.admins.length; i++) {
                     if (loginAttempt.user == $scope.admins[i].user) {
                         if (loginAttempt.pass == $scope.admins[i].pass) {
