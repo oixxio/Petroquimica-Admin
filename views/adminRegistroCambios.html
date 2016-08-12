@@ -22,7 +22,7 @@
             <tr>
               <th>ID</th>
               <th>Elemento</th>
-              <th>Nuevo Valor</th>
+              <th style="width: 450px; padding: 0px;">Nuevo Valor</th>
               <th>Fecha</th>
               <th>Usuario</th>
             </tr>
@@ -31,7 +31,7 @@
             <tr ng-repeat="change in changes | filter: searchText">
               <td>{{change.id}}</td>
               <td>{{change.elemento}}</td>
-              <td>{{change.valor}}</td>
+              <td class="ellipsis headTable">{{change.valor}}</td>
               <td>{{change.modificado}}</td>
               <td>{{change.usuario}}</td>
             </tr>

@@ -9,12 +9,18 @@
         $scope.userId = linkFactory.getU().id;        
 
         $scope.saveUData = function (obj) {
+            var aux = obj
             var key = obj.id
-            delete obj.id
-            delete obj.examen
-            dbFactory.putAPI('usuarios',key,obj).then(function (response) {
+            //delete obj.id
+            //[START eliminacion de propiedades no existentes en la DB]
+           delete aux.examen
+           delete aux.examenRealizadoStr
+
+           //[END eliminacion de propiedades no existentes en la DB]
+            dbFactory.putAPI('usuarios',key,aux).then(function (response) {
                 alert("Cambios guardados correctamente")
-                logFactory.set('usuarios',obj,'Admin')
+                logFactory.set('usuarios',aux,'Admin')
+                $scope.getUsers()
                 $location.path('/usuarios')
             }) 
         }

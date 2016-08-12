@@ -9,10 +9,11 @@ $result = mysqli_query($link,$sql);
 $input = '';
 $i=0;
 while ($data =  mysqli_fetch_assoc($result)) {
-	$input = $input.($i>0?',':'').json_encode($data);
+	$input = $input.($i>0?",":"").json_encode($data);
 	$i++;
 }
-$input = fixBadUnicodeForJson($input);
+//$input = fixBadUnicodeForJson($input);
+$input = iconv("UTF-8", "Windows-1252", $input);
 $cuestionario = fopen("cuestionario.json", "w");
 fwrite($cuestionario, '{ "cuestionario": ['.$input."]}");
 fclose($cuestionario);

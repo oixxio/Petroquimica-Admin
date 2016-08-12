@@ -53,8 +53,14 @@
      padding-bottom: 10px;"
    }
 .ellipsis{  
-    width: 20px;
+    
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 } 
+.headTable{
+    width: 450px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}

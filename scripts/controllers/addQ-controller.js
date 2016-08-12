@@ -4,8 +4,6 @@
     angular.module('app.dashboard').
     controller('addQController', ['$scope','$location','loginFactory','$http','$resource','dbFactory','logFactory',
     			function($scope,$location,loginFactory,$http,$resource,dbFactory,logFactory){
-        
-        checkLoggedIn();
 
         $scope.newQ = {}
         $scope.newData = function (obj) {

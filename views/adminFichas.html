@@ -48,7 +48,15 @@
               <td>{{signal.rotY}}</td>
               <td>{{signal.icon}}</td>
               <td>{{signal.video}}</td>
-              <td>{{signal.vidtmb}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="simulador/PR3/petroquimica/Assets/Resources/Signals/imageVideo/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
               <td>{{signal.audio}}</td>
               <td style="width: 72px;"><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
             </tr>

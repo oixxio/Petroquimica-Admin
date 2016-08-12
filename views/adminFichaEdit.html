@@ -1,4 +1,4 @@
-<div ng-controller="editUController" ng-init="checkLoggedIn()">
+<div ng-controller="editFController" ng-init="checkLoggedIn()">
   <div class="col-md-12 main">          
     <div class="row page-header">
       <div class="col-md-12">
@@ -56,7 +56,14 @@
           </div>
           <div class="form-group">
             <label>vidtmb</label>
-            <input type="text" class="form-control" ng-model="fData.vidtmb">
+            <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="simulador/PR3/petroquimica/Assets/Resources/Signals/imageVideo/{{fData.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+            <!--input type="text" class="form-control" ng-model="fData.vidtmb"-->
           </div> 
           <div class="form-group">
             <label>Audio</label>

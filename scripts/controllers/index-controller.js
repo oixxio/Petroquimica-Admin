@@ -14,8 +14,7 @@
                 var usersTrainedExt = 0;
                 var usersQtyInt = 0;
                 var usersQtyExt = 0;
-
-                
+             
                 //Cantidad de Empleados
                 $scope.usersQty = users.length;
 
@@ -36,6 +35,7 @@
                         users[i].examenRealizadoStr = 'Si'
                     } else {
                         users[i].examenRealizadoStr = 'No'
+                        users[i].examen = 'No'
                     }
                     //Cantidad de examenes realizados
                     if (users[i].empresa == "PRIII") {
@@ -51,6 +51,54 @@
                 $scope.usersTrained = usersTrained
                 $scope.usersTrainedExt = usersTrainedExt
                 $scope.users = users
+                /*[Start load questions list]*/
+                dbFactory.getAPI('preguntas','').then(function (response) {
+                   $scope.questions = response.data
+                   /*[Start load answers list]*/
+                    dbFactory.getAPI('respuestas','').then(function (response) {
+                        var answers = response.data
+                        var grade = 0
+                        var pass = 0, passExt = 0, fail = 0, failExt = 0;
+                        var answerIndex;
+
+                        for (var i = 0; i < 5; i++) {
+                            if ($scope.users[i].examenRealizado == 1) {
+                                grade = 0;
+                                for (var j = 0; j < answers.length; j++) {
+                                    if ($scope.users[i].id == answers[j].idUsuario) {
+                                        answerIndex = parseInt(answers[j].num) - 1;
+                                        if(answers[j].respuesta == $scope.questions[answerIndex].respCorrecta){
+                                            grade++;
+                                        }
+                                    }
+                                }
+                                if(grade >= 8){
+                                    if ($scope.users[i].empresa == "PRIII") {
+                                        pass += 1
+                                    } else {
+                                        passExt += 1
+                                    }
+                                }else{
+                                    if ($scope.users[i].empresa == "PRIII") {
+                                        fail += 1
+                                    } else {
+                                        failExt += 1
+                                    }
+                                }
+                            }
+                        }
+
+                        $scope.pass = pass;
+                        $scope.fail = fail;
+                        $scope.passExt = passExt;
+                        $scope.failExt = failExt;                
+                        $scope.perPass = (pass * 100)/(pass+fail);
+                        $scope.perPassExt = (passExt * 100)/(passExt+failExt);
+
+                    })
+                    /*[End load answers list]*/
+                })
+                /*[End load questions list]*/
             })
         }
         $scope.getUsers()
@@ -66,54 +114,7 @@
             $scope.signals = response.data
         })
         //End fichas load
-        /*[Start load questions list]*/
-        dbFactory.getAPI('preguntas','').then(function (response) {
-           $scope.questions = response.data
-           /*[Start load answers list]*/
-            dbFactory.getAPI('respuestas','').then(function (response) {
-                var answers = response.data
-                var grade = 0
-                var pass = 0, passExt = 0, fail = 0, failExt = 0;
-                var answerIndex;
-
-                for (var i = 0; i < 5; i++) {
-                    if ($scope.users[i].examenRealizado == 1) {
-                        grade = 0;
-                        for (var j = 0; j < answers.length; j++) {
-                            if ($scope.users[i].id == answers[j].idUsuario) {
-                                answerIndex = parseInt(answers[j].index) - 1;
-                                if(answers[j].respuesta == $scope.questions[answerIndex].respCorrecta){
-                                    grade++;
-                                }
-                            }
-                        }
-                        if(grade >= 8){
-                            if ($scope.users[i].empresa == "PRIII") {
-                                pass += 1
-                            } else {
-                                passExt += 1
-                            }
-                        }else{
-                            if ($scope.users[i].empresa == "PRIII") {
-                                fail += 1
-                            } else {
-                                failExt += 1
-                            }
-                        }
-                    }
-                }
-
-                $scope.pass = pass;
-                $scope.fail = fail;
-                $scope.passExt = passExt;
-                $scope.failExt = failExt;                
-                $scope.perPass = (pass * 100)/(pass+fail);
-                $scope.perPassExt = (passExt * 100)/(passExt+failExt);
-
-            })
-            /*[End load answers list]*/
-        })
-        /*[End load questions list]*/
+        
         /*[Start load log list]*/
         dbFactory.getAPI('changeLog','').then(function (response) {
             $scope.changes = response.data

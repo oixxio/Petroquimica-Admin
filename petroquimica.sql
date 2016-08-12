@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 14, 2016 at 12:35 PM
--- Server version: 5.5.49-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.16
+-- Host: localhost:3306
+-- Generation Time: Jul 26, 2016 at 10:49 AM
+-- Server version: 10.1.9-MariaDB-log
+-- PHP Version: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `petroquimica`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admins`
 --
 
-CREATE TABLE IF NOT EXISTS `admins` (
+CREATE TABLE `admins` (
   `user` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,23 +41,22 @@ INSERT INTO `admins` (`user`, `pass`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `changeLog`
+-- Table structure for table `changelog`
 --
 
-CREATE TABLE IF NOT EXISTS `changeLog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `changelog` (
+  `id` int(11) NOT NULL,
   `elemento` varchar(200) COLLATE utf8_bin NOT NULL,
   `valor` varchar(1000) COLLATE utf8_bin NOT NULL,
   `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `usuario` varchar(200) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=88 ;
+  `usuario` varchar(200) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `changeLog`
+-- Dumping data for table `changelog`
 --
 
-INSERT INTO `changeLog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VALUES
+INSERT INTO `changelog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VALUES
 (1, 'pass usuario id = 1', '456', '2016-06-16 16:42:46', 'admin\r\n'),
 (2, 'usuarios', '{"user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","legajo":"9999","puesto":"GERENCIA OPERACIONES","moduloA":"0","$$hashKey":"object:1845"}', '2016-06-21 15:08:09', 'Admin'),
 (3, 'usuarios', 'Array', '2016-06-21 15:09:31', 'Admin'),
@@ -144,7 +143,105 @@ INSERT INTO `changeLog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VAL
 (84, 'preguntas', '{"pregunta":"1342432","respuesta1":"1","respuesta2":"2","respuesta3":"3","respCorrecta":"1","idModulo":"1"}', '2016-07-04 17:06:53', 'Admin'),
 (85, 'usuarios', '{"pass":"Mugnaini"}', '2016-07-04 17:08:03', 'Admin'),
 (86, 'usuarios', '{"pass":"Mugnaini"}', '2016-07-04 17:08:09', 'Admin'),
-(87, 'usuarios', '{"user":"guille","name":"Guillermo","lastname":"Mugnaini","pass":"guille1234","DNI":"34317742","legajo":"53571","fechaNac":"1989-04-22T03:00:00.000Z","grupoSang":"0+","estudiosFinales":"Secundario","empresa":"OIXXIO","email":"mugnainiguillermo@gmail.com","puesto":"TECH LEADER"}', '2016-07-04 17:11:01', 'Admin');
+(87, 'usuarios', '{"user":"guille","name":"Guillermo","lastname":"Mugnaini","pass":"guille1234","DNI":"34317742","legajo":"53571","fechaNac":"1989-04-22T03:00:00.000Z","grupoSang":"0+","estudiosFinales":"Secundario","empresa":"OIXXIO","email":"mugnainiguillermo@gmail.com","puesto":"TECH LEADER"}', '2016-07-04 17:11:01', 'Admin'),
+(88, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-15 18:10:34', 'Admin'),
+(89, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente sirena, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-15 18:11:34', 'Admin'),
+(90, 'signals', '{"index":"14","descripcion":"general4","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-15 18:11:40', 'Admin'),
+(91, 'signals', '{"index":"14","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-15 18:21:28', 'Admin'),
+(92, 'signals', '{"index":"14","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-15 19:03:50', 'Admin'),
+(93, 'signals', '{"index":"2","descripcion":"general","text":"<b>IMPORTANTE</b>\\\\n\\\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>","x":"-26","y":"22","z":"-78","rotY":"88","icon":"Quad","video":"","vidtmb":"2-NormasDeSeguridad","audio":""}', '2016-07-15 19:04:24', 'Admin'),
+(94, 'signals', '{"index":"14","descripcion":"general","text":"<b>Facundo</b>\\\\n\\\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-18 22:44:20', 'Admin'),
+(95, 'signals', '{"index":"14","descripcion":"general","text":"Esta <b>Facundo</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-19 18:58:21', 'Admin'),
+(96, 'signals', '{"index":"14","descripcion":"general","text":"Esta <b>CUESTIONARIO</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-19 18:58:53', 'Admin'),
+(97, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente PRUEBA, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-19 18:59:06', 'Admin'),
+(98, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente PRUEBA, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-19 19:19:41', 'Admin'),
+(99, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente PRUEBA, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-19 19:20:19', 'Admin'),
+(100, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente PRUEBA, ¿Cómo debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-19 19:21:47', 'Admin'),
+(101, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente FACUNDO, ¿Como debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-20 02:37:45', 'Admin'),
+(102, 'signals', '{"index":"14","descripcion":"general","text":"Esta <b>Facundo</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4","x":"-14","y":"224","z":"-774","rotY":"914","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 03:22:32', 'Admin'),
+(103, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:24:46', 'Admin'),
+(104, 'signals', '{"index":"2","descripcion":"general","text":"<b>IMPORTANTE</b>\\\\n\\\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>","x":"-25.95721","y":"21.87291","z":"-77.79102","rotY":"88.42078","icon":"Quad","video":"","vidtmb":"2-NormasDeSeguridad","audio":""}', '2016-07-20 14:41:53', 'Admin'),
+(105, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:42:02', 'Admin'),
+(106, 'signals', '{"index":"1","descripcion":"general","text":"<b>Facundo</b>\\\\n\\\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:44:13', 'Admin'),
+(107, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:45:23', 'Admin'),
+(108, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\\\n\\\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:46:20', 'Admin'),
+(109, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> estÃ¡ dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 14:49:57', 'Admin'),
+(110, 'signals', '{"index":"15","descripcion":"general","text":"<b>RECOMENDACIONES PRÁCTICAS PARA UN TRABAJO SEGURO</b>\\nLas presentes recomendaciones expresan las medidas de precaución que deben adoptarse durante su tránsito, permanencia y trabajos a desarrollar en planta industrial.\\\\nSu conocimiento y adopción por parte de la supervisión y los operadores reduce los riesgos durante la ejecución de las tareas.","x":"8.061592","y":"21.97588","z":"48.45614","rotY":"91.22818","icon":"Quad","video":"","vidtmb":"3-RecomendacionesTrabajoSeguro","audio":""}', '2016-07-20 14:50:20', 'Admin'),
+(111, 'signals', '{"index":"2","descripcion":"general","text":"<b>IMPORTANTE</b>\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>","x":"-25.95721","y":"21.87291","z":"-77.79102","rotY":"88.42078","icon":"Quad","video":"","vidtmb":"2-NormasDeSeguridad","audio":""}', '2016-07-20 14:50:55', 'Admin'),
+(112, 'signals', '{"index":"2","descripcion":"general","text":"<b>IMPORTANTE</b>\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>","x":"-25.95721","y":"21.87291","z":"-77.79102","rotY":"88.42078","icon":"Quad","video":"","vidtmb":"2-NormasDeSeguridad","audio":""}', '2016-07-20 14:51:01', 'Admin'),
+(113, 'signals', '{"index":"3","descripcion":"general","text":"<b>ELEMENTOS DE PROTECCIÓN</b>\\nAl ingresar a la unidad fabril, usted deberá contar con los siguientes <b>elementos básicos de protección personal</b> de uso obligatorio.\\\\n- Casco\\\\n- Anteojos de seguridad\\\\n- Calzado de seguridad\\\\nDebe contar también con el siguiente <b>Elemento de Protección Personal (EEP)</b></br>- Máscara buconasal con filtro de carbón activado para vapores orgánicos y gases ácidos.","x":"-43","y":"22","z":"-72","rotY":"91","icon":"Quad","video":"","vidtmb":"4-EEP","audio":""}', '2016-07-20 14:51:45', 'Admin'),
+(114, 'signals', '{"index":"4","descripcion":"general","text":"<b>ANTES DE INGRESAR</b>\\nDebe solicitar \\\\\\"autorización\\\\\\" o permiso en la sala de control correspondiente\\\\n- Debe utilizar los <b>elementos básicos de protección personal</b>\\\\n- Debe portar los <b>Elementos de Protección Personal (EPP)</b>4","x":"-54.08721","y":"21.96142","z":"31.19513","rotY":"179.0169","icon":"Quad","video":"","vidtmb":"5-AntesDeIngresar","audio":""}', '2016-07-20 14:52:53', 'Admin'),
+(115, 'signals', '{"index":"12","descripcion":"general","text":"<b>PERMISO DE TRABAJO</b>\\nTodo trabajo que se efectue en la zona industrial debe realizarse munido del correspondiente <b>Permiso de Trabajo</b>.\\\\nEl permiso de trabajo aplica para los siguientes:\\\\nfrio, caliente, altura, hot—up, eléctrico, excavaciones, espacio confinado, ATS, instructivo, procedimiento, ingreso a tanques o recipientes","x":"-16","y":"22","z":"135","rotY":"269","icon":"Quad","video":"","vidtmb":"6-PermisoDeTrabajo","audio":""}', '2016-07-20 14:53:11', 'Admin'),
+(116, 'signals', '{"index":"9","descripcion":"general","text":"<b>EMERGENCIA</b>\\nSi usted detecta una emergencia, <b>avise al panelista o al supervisor del sector.</b> El sector es el encargado de activar el <b>sistema de aviso de alerta mediante el N° *333\\\\n— Fuga de gas 0 vapores téxicos\\\\n- Derrame de producto\\\\n- Principio de incendio y/o explosién\\\\n- Persona accidentada\\\\n- Persona con problemas de salud</b>","x":"-26","y":"22","z":"66","rotY":"92","icon":"Quad","video":"","vidtmb":"7-Emergencia","audio":""}', '2016-07-20 14:53:26', 'Admin'),
+(117, 'signals', '{"index":"11","descripcion":"general","text":"<b>NUESTRA EMPRESA CUENTA CON SISTEMAS DE AVISO DE ALERTA ANTE EMERGENCIAS\\n<b>Alerta Verde</b> > sin toque de sirena\\\\n<b>Alerta Amarillo</b> > con toque de sirena\\\\n<b>Alerta Rojo = Evacuacién</b> > con toque de sirena","x":"-34","y":"22","z":"127","rotY":"91","icon":"Quad","video":"","vidtmb":"8-SistemaDeEmergencia","audio":""}', '2016-07-20 14:53:48', 'Admin'),
+(118, 'signals', '{"index":"16","descripcion":"general","text":"<b>SISTEMA DE ALERTAS</b>\\nPRIII S.A. cuenta con diferentes sistemas de alerta\\\\n<b>- Balizas Iuminosas\\\\n- Parlantes internos\\\\n- Sirenas</b>\\\\nLos sistemas de alerta son <b>probados todos los dias Iunes a las 11:00am</b>, salvo que se indique lo contrario","x":"14","y":"22","z":"12","rotY":"270","icon":"Quad","video":"","vidtmb":"9-SistemaDeAlertas","audio":""}', '2016-07-20 14:54:12', 'Admin'),
+(119, 'signals', '{"index":"13","descripcion":"general","text":"<b>PROTECCION BAJO CUBIERTA</b>\\nAl informarse por los diferentes sistemas de alerta, debera permanecer en su puesto de trabajo o dirigirse al edificio mas cercano (punto de reunion) segun lo indicado en plane, a fin de lograr <b>proteccién bajo cubierta</b>","x":"68","y":"22","z":"135","rotY":"269","icon":"Quad","video":"","vidtmb":"10-ProteccionBajoCubierta","audio":""}', '2016-07-20 14:54:34', 'Admin'),
+(120, 'signals', '{"index":"5","descripcion":"general","text":"<b>CIRCULACION DE VEHlCULOS</b>\\nLos sr transportistas o conductores de vehiculos deberan estacionarse sobre su derecha, no sobre sendas peatonales, no interfiriendo ningun ingreso/egreso, calle ni cruce.","x":"-53.77119","y":"21.77711","z":"47.68107","rotY":"121.7611","icon":"Quad","video":"","vidtmb":"11-CirculacionVehiculos","audio":""}', '2016-07-20 14:54:56', 'Admin'),
+(121, 'signals', '{"index":"10","descripcion":"general","text":"<b>FUGA DE GAS</b>\\nAnte una fuga de gas:\\\\n<b>- Observe Ia direccion del viento\\\\n- AlÃ©jese en direcciÃ©n perpendicular al viento\\\\n- Asegurese de portar y utilizar los elementos de protecciÃ©n personal (EPP) como la mascara buconasal con filtro de carbÃ©n activado para vapores organicos y gases acidos</b>","x":"-37.89689","y":"21.97588","z":"81.07446","rotY":"179.5061","icon":"Quad","video":"Escape_de_gas_2_x264","vidtmb":"13-FugaDeGas","audio":"00---Fuga_d_gas_x264 audio"}', '2016-07-20 14:55:11', 'Admin'),
+(122, 'signals', '{"index":"14","descripcion":"general","text":"<b>DURANTE UNA EMERGENCIA, usted debe:</b>\\n<b>- Mantener siempre la calma</b>\\n<b>- NO correr.</b> Caminar con paso acelerado\\n<b>- NO usar lineas telefénicas</b>\\n<b>- Obedecer Ias instrucciones</b> del Lider de la evacuacién del ediﬁcio","x":"94.68446","y":"22","z":"54","rotY":"183","icon":"Quad","video":"durante_emergencia_x264","vidtmb":"12-DuranteEmergencia","audio":""}', '2016-07-20 14:55:47', 'Admin'),
+(123, 'signals', '{"index":"7","descripcion":"general","text":"<b>COLOCACION DE MASCARA BUCONASAL</b>\\nSiga las instrucciones detalladas para la correcta colocación de la mascara buconasal y utilicela siempre que sea indicado.\\nRecuerde portar la mascara en todo momento mientras trabaja en exposición a gases o vapores tóxicos.","x":"-67","y":"22","z":"98","rotY":"0","icon":"Quad","video":"46---colocacion-mascara-buconasal-2_1_x264","vidtmb":"16-EnCasoAccidente","audio":"Colocacion_mascara_buconasal_AUDIO"}', '2016-07-20 14:56:58', 'Admin'),
+(124, 'signals', '{"index":"18","descripcion":"general","text":"<b>iGRACIAS!\\nGracias a su colaboracién es posible resguardar la seguridad e integridad de todos y cuidar nuestro medio ambiente.<b/>","x":"-23","y":"22","z":"-37","rotY":"273","icon":"Quad","video":"","vidtmb":"15-Gracias","audio":""}', '2016-07-20 14:57:12', 'Admin'),
+(125, 'signals', '{"index":"8","descripcion":"general","text":"<b>PROCEDIMIENTO EN CASO DE ACCIDENTE<b/>\\nRecuerde siempre:\\n<b>— Mantener siempre la calma<b/>\\n<b>— NO correr.<b/> Caminar con paso acelerado\\\\n<b>— NO usar lineas telefénicas<b/>\\n<b>— Obedecer Ias instrucciones<b/> del Lider de la evacuacién del edificio","x":"-51","y":"22","z":"108","rotY":"105","icon":"Quad","video":"En caso de accidente","vidtmb":"16-EnCasoAccidente","audio":""}', '2016-07-20 14:57:41', 'Admin'),
+(126, 'signals', '{"index":"17","descripcion":"general","text":"<b>SE ENCUENTRA PROHIBIDO\\n- Trabajar sin permiso de trabajo\\n- Utilizar teléfonos celulares no autorizados\\n- Usar maquinas fotograficas no autorizadas, MP3s o equipos de musica\\n- Ingresar con bebidas alcohélicas</b>","x":"-9.855015","y":"21.90327","z":"3.780991","rotY":"179.5061","icon":"Quad","video":"","vidtmb":"17-Prohibido","audio":""}', '2016-07-20 14:58:07', 'Admin'),
+(127, 'signals', '{"index":"6","descripcion":"general","text":"<b>INCUMPLIMIENTO DE NORMAS\\nEl incumplimiento de las normas y disposiciones pone en riesgo la seguridad de todos.</b>","x":"-69","y":"22","z":"82","rotY":"0","icon":"Quad","video":"","vidtmb":"18-Incumplimiento","audio":""}', '2016-07-20 14:58:24', 'Admin'),
+(128, 'signals', '{"index":"8","descripcion":"general","text":"<b>PROCEDIMIENTO EN CASO DE ACCIDENTE</b>\\nRecuerde siempre:\\n<b>— Mantener siempre la calma</b>\\n<b>— NO correr.</b> Caminar con paso acelerado\\n<b>— NO usar lineas telefénicas</b>\\n<b>— Obedecer Ias instrucciones</b> del Lider de la evacuacién del edificio","x":"-51","y":"22","z":"108","rotY":"105","icon":"Quad","video":"En caso de accidente","vidtmb":"16-EnCasoAccidente","audio":""}', '2016-07-20 15:00:30', 'Admin'),
+(129, 'signals', '{"index":"10","descripcion":"general","text":"<b>FUGA DE GAS</b>\\nAnte una fuga de gas:\\n<b>- Observe Ia direccion del viento\\n- AlÃ©jese en direcciÃ©n perpendicular al viento\\n- Asegurese de portar y utilizar los elementos de protecciÃ©n personal (EPP) como la mascara buconasal con filtro de carbÃ©n activado para vapores organicos y gases acidos</b>","x":"-37.89689","y":"21.97588","z":"81.07446","rotY":"179.5061","icon":"Quad","video":"Escape_de_gas_2_x264","vidtmb":"13-FugaDeGas","audio":"00---Fuga_d_gas_x264 audio"}', '2016-07-20 15:01:17', 'Admin'),
+(130, 'signals', '{"index":"11","descripcion":"general","text":"<b>NUESTRA EMPRESA CUENTA CON SISTEMAS DE AVISO DE ALERTA ANTE EMERGENCIAS</b>\\n<b>Alerta Verde</b> > sin toque de sirena\\\\n<b>Alerta Amarillo</b> > con toque de sirena\\\\n<b>Alerta Rojo = Evacuacién</b> > con toque de sirena","x":"-34","y":"22","z":"127","rotY":"91","icon":"Quad","video":"","vidtmb":"8-SistemaDeEmergencia","audio":""}', '2016-07-20 15:02:15', 'Admin'),
+(131, 'signals', '{"index":"18","descripcion":"general","text":"<b>iGRACIAS!\\nGracias a su colaboración es posible resguardar la seguridad e integridad de todos y cuidar nuestro medio ambiente.</b>","x":"-23","y":"22","z":"-37","rotY":"273","icon":"Quad","video":"","vidtmb":"15-Gracias","audio":""}', '2016-07-20 15:04:10', 'Admin'),
+(132, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 15:46:55', 'Admin'),
+(133, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 15:49:24', 'Admin'),
+(134, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 15:49:37', 'Admin'),
+(135, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:33:37', 'Admin'),
+(136, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:34:23', 'Admin');
+INSERT INTO `changelog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VALUES
+(137, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:38:32', 'Admin'),
+(138, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÃ“N</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:39:55', 'Admin'),
+(139, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:40:04', 'Admin'),
+(140, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducciÃ³n a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizarÃ¡ tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:40:45', 'Admin'),
+(141, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x2644","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-20 16:42:57', 'Admin'),
+(142, 'signals', '{"index":"10","descripcion":"general","text":"<b>FUGA DE GAS</b>\\nAnte una fuga de gas:\\n<b>- Observe Ia direccion del viento\\n- Aléjese en dirección perpendicular al viento\\n- Asegurese de portar y utilizar los elementos de protección personal (EPP) como la mascara buconasal con filtro de carbón activado para vapores organicos y gases acidos</b>","x":"-37.89689","y":"21.97588","z":"81.07446","rotY":"179.5061","icon":"Quad","video":"Escape_de_gas_2_x264","vidtmb":"13-FugaDeGas","audio":"00---Fuga_d_gas_x264 audio"}', '2016-07-20 16:46:00', 'Admin'),
+(143, 'cuestionarios', '{"pregunta":"Identifique el siguiente sí­mbolo","respuesta1":"Zona habilitada para fumar","respuesta2":"Zona de riesgo","respuesta3":"Punto de encuentro","respCorrecta":"1","idModulo":"1","index":"2","trigger":"SIMBOLO"}', '2016-07-20 16:46:45', 'Admin'),
+(144, 'cuestionarios', '{"pregunta":"Si usted se encuentra en una situación de escape de gas con viento en dirección NORTE,¿Usted debe huir hacia?","respuesta1":"A - NORTE","respuesta2":"B - SUR","respuesta3":"C - OESTE","respCorrecta":"2","idModulo":"1","index":"3","trigger":"SITUACION"}', '2016-07-20 16:47:09', 'Admin'),
+(145, 'cuestionarios', '{"pregunta":"En el caso de desempeñarse como operario, ¿cuáles son los elementos de seguridad que debe tener?","respuesta1":"Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.","respuesta2":"Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.","respuesta3":"Mascara buco-nasal, ropa apropiada, calzado de seguridad, anteojos de seguridad, guantes, casco.","respCorrecta":"2","idModulo":"1","index":"4","trigger":"NONE"}', '2016-07-20 16:47:32', 'Admin'),
+(146, 'cuestionarios', '{"pregunta":"Al escuchar la siguiente SIRENA, ¿Como debe proceder?","respuesta1":"Avisar al responsable del sector más cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo/ir a los puntos de reunión","respCorrecta":"2","idModulo":"3","index":"1","trigger":"VOCINA_A"}', '2016-07-20 16:51:49', 'Admin'),
+(147, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido4"}', '2016-07-22 22:01:15', 'Admin'),
+(148, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"bienvenida.mp4_x265"}', '2016-07-22 22:03:37', 'Admin'),
+(149, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"bienvenida.mp4_x265"}', '2016-07-25 14:29:43', 'Admin'),
+(150, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:32:30', 'Admin'),
+(151, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:32:44', 'Admin'),
+(152, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenida"}', '2016-07-25 14:41:21', 'Admin'),
+(153, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:41:33', 'Admin'),
+(154, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:50:01', 'Admin'),
+(155, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenida"}', '2016-07-25 14:51:27', 'Admin'),
+(156, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:51:34', 'Admin'),
+(157, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:51:50', 'Admin'),
+(158, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:52:35', 'Admin'),
+(159, 'signals', '{"index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:53:53', 'Admin'),
+(160, 'signals', '{"id":"1","index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:56:16', 'Admin'),
+(161, 'signals', '{"id":"1","index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenida"}', '2016-07-25 14:56:24', 'Admin'),
+(162, 'signals', '{"id":"1","index":"1","descripcion":"general","text":"<b>BIENVENIDOS</b>\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>","x":"-1.052284","y":"21.97588","z":"-77.40822","rotY":"91.22818","icon":"Quad","video":"bienvenida.mp4_x265","vidtmb":"1-Bienvenidos4","audio":"Bienvenido"}', '2016-07-25 14:56:31', 'Admin'),
+(163, 'usuarios', '{"id":"1","user":"santi","pass":"santi12","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:03:29', 'Admin'),
+(164, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:03:37', 'Admin'),
+(165, 'usuarios', '{"id":"1","user":"santi","pass":"santi12","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:05:41', 'Admin'),
+(166, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:06:07', 'Admin'),
+(167, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:07:55', 'Admin'),
+(168, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:08:31', 'Admin'),
+(169, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:09:07', 'Admin'),
+(170, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:09:16', 'Admin'),
+(171, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:09:29', 'Admin'),
+(172, 'usuarios', '{"id":"2","user":"reyrobertoelias","pass":"reyrobertoelias123","name":"Roberto Elias ","lastname":"Rey","DNI":"32654987","legajo":"31","fechaNac":"2016-07-04","grupoSang":"0-","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"MANTENIMIENTO","examenRealizado":"0","moduloA":"1","fechaExamen":"1404183600"}', '2016-07-25 15:09:44', 'Admin'),
+(173, 'usuarios', '{"id":"2","user":"reyrobertoelias","pass":"reyrobertoelias123","name":"Roberto Elias ","lastname":"Rey","DNI":"32654987","legajo":"31","fechaNac":"2016-07-04","grupoSang":"0-","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"MANTENIMIENTO","examenRealizado":"0","moduloA":"0","fechaExamen":"1404183600"}', '2016-07-25 15:09:52', 'Admin'),
+(174, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:10:01', 'Admin'),
+(175, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:10:07', 'Admin'),
+(176, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:14:35', 'Admin'),
+(177, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:14:42', 'Admin'),
+(178, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:14:47', 'Admin'),
+(179, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"0","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:15:05', 'Admin'),
+(180, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:15:11', 'Admin'),
+(181, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"1","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:16:03', 'Admin'),
+(182, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"0","moduloA":"1","fechaExamen":"1467601200"}', '2016-07-25 15:16:09', 'Admin'),
+(183, 'usuarios', '{"id":"1","user":"santi","pass":"santi123","name":"Santiago","lastname":"Roca","DNI":"32654987","legajo":"54","fechaNac":"2016-07-05","grupoSang":"0+","estudiosFinales":"Universitario","empresa":"PRIII","email":"123@PRIII.com","puesto":"GERENCIA OPERACIONES","examenRealizado":"0","moduloA":"0","fechaExamen":"1467601200"}', '2016-07-25 15:16:14', 'Admin'),
+(184, 'usuarios', '{"user":"facu","name":"Facundo","lastname":"Ompre","pass":"facu123","DNI":"33893019","legajo":"000","fechaNac":"1988-12-09T03:00:00.000Z","grupoSang":"A-","estudiosFinales":"Universitarios","empresa":"OIXXIO","email":"facundo@oixxio.net","puesto":"PM"}', '2016-07-25 15:17:09', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -152,7 +249,7 @@ INSERT INTO `changeLog` (`id`, `elemento`, `valor`, `modificado`, `usuario`) VAL
 -- Table structure for table `cuestionario`
 --
 
-CREATE TABLE IF NOT EXISTS `cuestionario` (
+CREATE TABLE `cuestionario` (
   `idUsuario` int(11) NOT NULL,
   `pregunta1` int(11) NOT NULL,
   `pregunta2` int(11) NOT NULL,
@@ -180,14 +277,13 @@ INSERT INTO `cuestionario` (`idUsuario`, `pregunta1`, `pregunta2`, `pregunta3`, 
 -- Table structure for table `modulo`
 --
 
-CREATE TABLE IF NOT EXISTS `modulo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `modulo` (
+  `id` int(11) NOT NULL,
   `descripcion` varchar(1000) NOT NULL,
   `alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `baja` datetime NOT NULL,
-  `modificacion` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `modificacion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modulo`
@@ -202,8 +298,8 @@ INSERT INTO `modulo` (`id`, `descripcion`, `alta`, `baja`, `modificacion`) VALUE
 -- Table structure for table `preguntas`
 --
 
-CREATE TABLE IF NOT EXISTS `preguntas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `preguntas` (
+  `id` int(11) NOT NULL,
   `pregunta` varchar(1000) COLLATE utf8_bin NOT NULL,
   `respuesta1` varchar(200) COLLATE utf8_bin NOT NULL,
   `respuesta2` varchar(200) COLLATE utf8_bin NOT NULL,
@@ -211,18 +307,17 @@ CREATE TABLE IF NOT EXISTS `preguntas` (
   `respCorrecta` int(11) NOT NULL,
   `idModulo` int(11) NOT NULL,
   `index` int(11) NOT NULL,
-  `trigger` varchar(500) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+  `trigger` varchar(500) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `preguntas`
 --
 
 INSERT INTO `preguntas` (`id`, `pregunta`, `respuesta1`, `respuesta2`, `respuesta3`, `respCorrecta`, `idModulo`, `index`, `trigger`) VALUES
-(0, 'Al escuchar la siguiente sirena, ¿Cómo debe proceder?', 'Avisar al responsable del sector más cercano', 'Evacuar la planta', 'Permanecer en su puesto de trabajo/ir a los puntos de reunión', 2, 3, 1, 'VOCINA_A'),
-(1, 'Identifique el siguiente símbolo', 'Zona habilitada para fumar', 'Zona de riesgo', 'Punto de encuentro', 1, 1, 2, 'SIMBOLO'),
-(2, 'Si usted se encuentra en una situación de escape de gas con viento en direccion NORTE, ¿Usted debe huir hacia?', 'A - NORTE', 'B - SUR', 'C - OESTE', 2, 1, 3, 'SITUACION'),
+(0, 'Al escuchar la siguiente SIRENA, ¿Como debe proceder?', 'Avisar al responsable del sector más cercano', 'Evacuar la planta', 'Permanecer en su puesto de trabajo/ir a los puntos de reunión', 2, 3, 1, 'VOCINA_A'),
+(1, 'Identifique el siguiente sí­mbolo', 'Zona habilitada para fumar', 'Zona de riesgo', 'Punto de encuentro', 1, 1, 2, 'SIMBOLO'),
+(2, 'Si usted se encuentra en una situación de escape de gas con viento en dirección NORTE,¿Usted debe huir hacia?', 'A - NORTE', 'B - SUR', 'C - OESTE', 2, 1, 3, 'SITUACION'),
 (3, 'En el caso de desempeñarse como operario, ¿cuáles son los elementos de seguridad que debe tener?', 'Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.', 'Mascara buco-nasal, calzado de seguridad, anteojos de seguridad, casco, ropa apropiada.', 'Mascara buco-nasal, ropa apropiada, calzado de seguridad, anteojos de seguridad, guantes, casco.', 2, 1, 4, 'NONE'),
 (4, 'En caso de emergencia usted debe:', 'Llamar al número *333 desde cualquier teléfono interno.', 'Avisar al supervisor del sector, quien se encargara de llamar al *444.', '"Avisar al supervisor del sector, quien se encargara de llamar al *333.', 2, 1, 5, 'NONE'),
 (5, '¿Antes de realizar cualquier tipo de trabajo usted debe tener:', 'Autorizacion del supervisor del sector.', 'Autorizacion del jefe de SMA.', 'El permiso de trabajo correspondiente.', 2, 1, 6, 'NONE'),
@@ -237,15 +332,14 @@ INSERT INTO `preguntas` (`id`, `pregunta`, `respuesta1`, `respuesta2`, `respuest
 -- Table structure for table `respuestas`
 --
 
-CREATE TABLE IF NOT EXISTS `respuestas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `respuestas` (
+  `id` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idModulo` int(11) NOT NULL,
   `index` int(11) NOT NULL,
   `respuesta` int(11) NOT NULL,
-  `alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=42 ;
+  `alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `respuestas`
@@ -299,45 +393,44 @@ INSERT INTO `respuestas` (`id`, `idUsuario`, `idModulo`, `index`, `respuesta`, `
 -- Table structure for table `signals`
 --
 
-CREATE TABLE IF NOT EXISTS `signals` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `signals` (
+  `id` int(3) NOT NULL,
   `index` int(3) NOT NULL,
   `descripcion` varchar(100) COLLATE utf8_bin NOT NULL,
   `text` varchar(1000) COLLATE utf8_bin NOT NULL,
-  `x` int(10) NOT NULL,
-  `y` int(10) NOT NULL,
-  `z` int(10) NOT NULL,
-  `rotY` int(10) NOT NULL,
+  `x` double NOT NULL,
+  `y` double NOT NULL,
+  `z` double NOT NULL,
+  `rotY` double NOT NULL,
   `icon` varchar(50) COLLATE utf8_bin NOT NULL,
   `video` varchar(100) COLLATE utf8_bin NOT NULL,
   `vidtmb` varchar(100) COLLATE utf8_bin NOT NULL,
-  `audio` varchar(100) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=19 ;
+  `audio` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `signals`
 --
 
 INSERT INTO `signals` (`id`, `index`, `descripcion`, `text`, `x`, `y`, `z`, `rotY`, `icon`, `video`, `vidtmb`, `audio`) VALUES
-(1, 14, 'general4', '<b>BIENVENIDOS</b>\\n\\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>4', -14, 224, -774, 914, 'Quad', 'bienvenida.mp4_x2644', '1-Bienvenidos4', 'Bienvenido4'),
-(2, 2, 'general', '<b>IMPORTANTE</b>\\n\\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>', -26, 22, -78, 88, 'Quad', '', '2-NormasDeSeguridad', ''),
-(3, 15, 'general', '<b>RECOMENDACIONES PRÁCTICAS PARA UN TRABAJO SEGURO</b>\\n\\nLas presentes recomendaciones expresan las medidas de precaución que deben adoptarse durante su tránsito, permanencia y trabajos a desarrollar en planta industrial.\\nSu conocimiento y adopción por parte de la supervisión y los operadores reduce los riesgos durante la ejecución de las tareas.', 8, 22, 48, 91, 'Quad', '', '3-RecomendacionesTrabajoSeguro', ''),
-(4, 3, 'general', '<b>ELEMENTOS DE PROTECCIÓN</b>\\n\\nAl ingresar a la unidad fabril, usted deberá contar con los siguientes <b>elementos básicos de protección personal</b> de uso obligatorio.\\n- Casco\\n- Anteojos de seguridad\\n- Calzado de seguridad\\nDebe contar también con el siguiente <b>Elemento de Protección Personal (EEP)</b></br>- Máscara buconasal con filtro de carbón activado para vapores orgánicos y gases ácidos.', -43, 22, -72, 91, 'Quad', '', '4-EEP', ''),
-(5, 4, 'general', '<b>ANTES DE INGRESAR</b>\\n\\n- Debe solicitar \\"autorización\\" o permiso en la sala de control correspondiente\\n- Debe utilizar los <b>elementos básicos de protección personal</b>\\n- Debe portar los <b>Elementos de Protección Personal (EPP)</b>4', -54, 22, 31, 179, 'Quad', '', '5-AntesDeIngresar', ''),
-(6, 12, 'general', '<b>PERMISO DE TRABAJO</b>\\n\\nTodo trabajo que se efectue en la zona industrial debe realizarse munido del correspondiente <b>Permiso de Trabajo</b>.\\nEl permiso de trabajo aplica para los siguientes:\\nfrio, caliente, altura, hot—up, eléctrico, excavaciones, espacio confinado, ATS, instructivo, procedimiento, ingreso a tanques o recipientes', -16, 22, 135, 269, 'Quad', '', '6-PermisoDeTrabajo', ''),
-(7, 9, 'general', '<b>EMERGENCIA</b>\\n\\nSi usted detecta una emergencia, <b>avise al panelista o al supervisor del sector.</b> El sector es el encargado de activar el <b>sistema de aviso de alerta mediante el N° *333\\n— Fuga de gas 0 vapores téxicos\\n- Derrame de producto\\n- Principio de incendio y/o explosién\\n- Persona accidentada\\n- Persona con problemas de salud</b>', -26, 22, 66, 92, 'Quad', '', '7-Emergencia', ''),
-(8, 11, 'general', '<b>NUESTRA EMPRESA CUENTA CON SISTEMAS DE AVISO DE ALERTA ANTE EMERGENCIAS\\n\\n<b>Alerta Verde</b> > sin toque de sirena\\n<b>Alerta Amarillo</b> > con toque de sirena\\n<b>Alerta Rojo = Evacuacién</b> > con toque de sirena', -34, 22, 127, 91, 'Quad', '', '8-SistemaDeEmergencia', ''),
-(9, 16, 'general', '<b>SISTEMA DE ALERTAS</b><br/\\nPRIII S.A. cuenta con diferentes sistemas de alerta\\n<b>- Balizas Iuminosas\\n- Parlantes internos\\n- Sirenas</b>\\nLos sistemas de alerta son <b>probados todos los dias Iunes a las 11:00am</b>, salvo que se indique lo contrario', 14, 22, 12, 270, 'Quad', '', '9-SistemaDeAlertas', ''),
-(10, 13, 'general', '<b>PROTECCION BAJO CUBIERTA</b>\\n\\nAl informarse por los diferentes sistemas de alerta, debera permanecer en su puesto de trabajo o dirigirse al edificio mas cercano (punto de reunion) segun lo indicado en plane, a fin de lograr <b>proteccién bajo cubierta</b>', 68, 22, 135, 269, 'Quad', '', '10-ProteccionBajoCubierta', ''),
-(11, 5, 'general', '<b>CIRCULACION DE VEHlCULOS</b>\\n\\nLos sr transportistas o conductores de vehiculos deberan estacionarse sobre su derecha, no sobre sendas peatonales, no interfiriendo ningun ingreso/egreso, calle ni cruce.', -54, 22, 48, 122, 'Quad', '', '11-CirculacionVehiculos', ''),
-(12, 14, 'general', '<b>DURANTE UNA EMERGENCIA, usted debe:</b>\\n\\n<b>- Mantener siempre la calma</b>\\n<b>- NO correr.</b> Caminar con paso acelerado\\n<b>- NO usar lineas telefénicas</b>\\n<b>- Obedecer Ias instrucciones</b> del Lider de la evacuacién del ediﬁcio', 95, 22, 54, 183, 'Quad', 'durante_emergencia_x264', '12-DuranteEmergencia', ''),
-(13, 10, 'general', '<b>FUGA DE GAS</b>\\n\\nAnte una fuga de gas:\\n<b>- Observe Ia direccion del viento\\n- Aléjese en direccién perpendicular al viento\\n- Asegurese de portar y utilizar los elementos de proteccién personal (EPP) como la mascara buconasal con filtro de carbén activado para vapores organicos y gases acidos</b>', -38, 22, 81, 180, 'Quad', 'Escape_de_gas_2_x264', '13-FugaDeGas', '00---Fuga_d_gas_x264 audio'),
-(14, 7, 'general', '<b>COLOCACION DE MASCARA BUCONASAL</b>\\n\\nSiga las instrucciones detalladas para la correcta colocacién de la mascara buconasal y utilicela siempre que sea indicado.\\nRecuerde portar la mascara en todo momento mientras trabaja en exposicién a gases o vapores téxicos.', -67, 22, 98, 0, 'Quad', '46---colocacion-mascara-buconasal-2_1_x264', '16-EnCasoAccidente', 'Colocacion_mascara_buconasal_AUDIO'),
-(15, 18, 'general', '<b>iGRACIAS!\\n\\nGracias a su colaboracién es posible resguardar la seguridad e integridad de todos y cuidar nuestro medio ambiente.<b/>', -23, 22, -37, 273, 'Quad', '', '15-Gracias', ''),
-(16, 8, 'general', '<b>PROCEDIMIENTO EN CASO DE ACCIDENTE<b/>\\n\\nRecuerde siempre:\\n<b>— Mantener siempre la calma<b/>\\n<b>— NO correr.<b/> Caminar con paso acelerado\\n<b>— NO usar lineas telefénicas<b/>\\n<b>— Obedecer Ias instrucciones<b/> del Lider de la evacuacién del edificio', -51, 22, 108, 105, 'Quad', 'En caso de accidente', '16-EnCasoAccidente', ''),
-(17, 17, 'general', '<b>SE ENCUENTRA PROHIBIDO\\n\\n- Trabajar sin permiso de trabajo\\n- Utilizar teléfonos celulares no autorizados\\n- Usar maquinas fotograficas no autorizadas, MP3s o equipos de musica\\n- Ingresar con bebidas alcohélicas</b>', -10, 22, 4, 180, 'Quad', '', '17-Prohibido', ''),
-(18, 6, 'general', '<b>INCUMPLIMIENTO DE NORMAS\\n\\nEl incumplimiento de las normas y disposiciones pone en riesgo la seguridad de todos.</b>', -69, 22, 82, 0, 'Quad', '', '18-Incumplimiento', '');
+(1, 1, 'general', '<b>BIENVENIDOS</b>\nEsta <b>CAPACITACIÓN</b> de inducción a la <b>SEGURIDAD Y MEDIO AMBIENTE</b> está dirigida para el personal que realizará tareas en nuestra Planta Industria previendo los <b>RIESGOS LABORALES</b> y los <b>IMPACTOS AMBIENTALES</b>', -1.052284, 21.97588, -77.40822, 91.22818, 'Quad', 'bienvenida.mp4_x265', '1-Bienvenidos4', 'Bienvenido'),
+(2, 2, 'general', '<b>IMPORTANTE</b>\nTodo personal que ingresa, transita y/o desarrolla tareas en la unidad fabril debe respetar, cumplir y hacer cumplir con todas las <b>normas de seguridad.</b>', -25.95721, 21.87291, -77.79102, 88.42078, 'Quad', '', '2-NormasDeSeguridad', ''),
+(3, 15, 'general', '<b>RECOMENDACIONES PRÁCTICAS PARA UN TRABAJO SEGURO</b>\nLas presentes recomendaciones expresan las medidas de precaución que deben adoptarse durante su tránsito, permanencia y trabajos a desarrollar en planta industrial.\\nSu conocimiento y adopción por parte de la supervisión y los operadores reduce los riesgos durante la ejecución de las tareas.', 8.061592, 21.97588, 48.45614, 91.22818, 'Quad', '', '3-RecomendacionesTrabajoSeguro', ''),
+(4, 3, 'general', '<b>ELEMENTOS DE PROTECCIÓN</b>\nAl ingresar a la unidad fabril, usted deberá contar con los siguientes <b>elementos básicos de protección personal</b> de uso obligatorio.\\n- Casco\\n- Anteojos de seguridad\\n- Calzado de seguridad\\nDebe contar también con el siguiente <b>Elemento de Protección Personal (EEP)</b></br>- Máscara buconasal con filtro de carbón activado para vapores orgánicos y gases ácidos.', -43, 22, -72, 91, 'Quad', '', '4-EEP', ''),
+(5, 4, 'general', '<b>ANTES DE INGRESAR</b>\nDebe solicitar \\"autorización\\" o permiso en la sala de control correspondiente\\n- Debe utilizar los <b>elementos básicos de protección personal</b>\\n- Debe portar los <b>Elementos de Protección Personal (EPP)</b>4', -54.08721, 21.96142, 31.19513, 179.0169, 'Quad', '', '5-AntesDeIngresar', ''),
+(6, 12, 'general', '<b>PERMISO DE TRABAJO</b>\nTodo trabajo que se efectue en la zona industrial debe realizarse munido del correspondiente <b>Permiso de Trabajo</b>.\\nEl permiso de trabajo aplica para los siguientes:\\nfrio, caliente, altura, hot—up, eléctrico, excavaciones, espacio confinado, ATS, instructivo, procedimiento, ingreso a tanques o recipientes', -16, 22, 135, 269, 'Quad', '', '6-PermisoDeTrabajo', ''),
+(7, 9, 'general', '<b>EMERGENCIA</b>\nSi usted detecta una emergencia, <b>avise al panelista o al supervisor del sector.</b> El sector es el encargado de activar el <b>sistema de aviso de alerta mediante el N° *333\\n— Fuga de gas 0 vapores téxicos\\n- Derrame de producto\\n- Principio de incendio y/o explosién\\n- Persona accidentada\\n- Persona con problemas de salud</b>', -26, 22, 66, 92, 'Quad', '', '7-Emergencia', ''),
+(8, 11, 'general', '<b>NUESTRA EMPRESA CUENTA CON SISTEMAS DE AVISO DE ALERTA ANTE EMERGENCIAS</b>\n<b>Alerta Verde</b> > sin toque de sirena\\n<b>Alerta Amarillo</b> > con toque de sirena\\n<b>Alerta Rojo = Evacuacién</b> > con toque de sirena', -34, 22, 127, 91, 'Quad', '', '8-SistemaDeEmergencia', ''),
+(9, 16, 'general', '<b>SISTEMA DE ALERTAS</b>\nPRIII S.A. cuenta con diferentes sistemas de alerta\\n<b>- Balizas Iuminosas\\n- Parlantes internos\\n- Sirenas</b>\\nLos sistemas de alerta son <b>probados todos los dias Iunes a las 11:00am</b>, salvo que se indique lo contrario', 14, 22, 12, 270, 'Quad', '', '9-SistemaDeAlertas', ''),
+(10, 13, 'general', '<b>PROTECCION BAJO CUBIERTA</b>\nAl informarse por los diferentes sistemas de alerta, debera permanecer en su puesto de trabajo o dirigirse al edificio mas cercano (punto de reunion) segun lo indicado en plane, a fin de lograr <b>proteccién bajo cubierta</b>', 68, 22, 135, 269, 'Quad', '', '10-ProteccionBajoCubierta', ''),
+(11, 5, 'general', '<b>CIRCULACION DE VEHlCULOS</b>\nLos sr transportistas o conductores de vehiculos deberan estacionarse sobre su derecha, no sobre sendas peatonales, no interfiriendo ningun ingreso/egreso, calle ni cruce.', -53.77119, 21.77711, 47.68107, 121.7611, 'Quad', '', '11-CirculacionVehiculos', ''),
+(12, 14, 'general', '<b>DURANTE UNA EMERGENCIA, usted debe:</b>\n<b>- Mantener siempre la calma</b>\n<b>- NO correr.</b> Caminar con paso acelerado\n<b>- NO usar lineas telefénicas</b>\n<b>- Obedecer Ias instrucciones</b> del Lider de la evacuacién del ediﬁcio', 94.68446, 22, 54, 183, 'Quad', 'durante_emergencia_x264', '12-DuranteEmergencia', ''),
+(13, 10, 'general', '<b>FUGA DE GAS</b>\nAnte una fuga de gas:\n<b>- Observe Ia direccion del viento\n- Aléjese en dirección perpendicular al viento\n- Asegurese de portar y utilizar los elementos de protección personal (EPP) como la mascara buconasal con filtro de carbón activado para vapores organicos y gases acidos</b>', -37.89689, 21.97588, 81.07446, 179.5061, 'Quad', 'Escape_de_gas_2_x264', '13-FugaDeGas', '00---Fuga_d_gas_x264 audio'),
+(14, 7, 'general', '<b>COLOCACION DE MASCARA BUCONASAL</b>\nSiga las instrucciones detalladas para la correcta colocación de la mascara buconasal y utilicela siempre que sea indicado.\nRecuerde portar la mascara en todo momento mientras trabaja en exposición a gases o vapores tóxicos.', -67, 22, 98, 0, 'Quad', '46---colocacion-mascara-buconasal-2_1_x264', '16-EnCasoAccidente', 'Colocacion_mascara_buconasal_AUDIO'),
+(15, 18, 'general', '<b>iGRACIAS!\nGracias a su colaboración es posible resguardar la seguridad e integridad de todos y cuidar nuestro medio ambiente.</b>', -23, 22, -37, 273, 'Quad', '', '15-Gracias', ''),
+(16, 8, 'general', '<b>PROCEDIMIENTO EN CASO DE ACCIDENTE</b>\nRecuerde siempre:\n<b>— Mantener siempre la calma</b>\n<b>— NO correr.</b> Caminar con paso acelerado\n<b>— NO usar lineas telefénicas</b>\n<b>— Obedecer Ias instrucciones</b> del Lider de la evacuacién del edificio', -51, 22, 108, 105, 'Quad', 'En caso de accidente', '16-EnCasoAccidente', ''),
+(17, 17, 'general', '<b>SE ENCUENTRA PROHIBIDO\n- Trabajar sin permiso de trabajo\n- Utilizar teléfonos celulares no autorizados\n- Usar maquinas fotograficas no autorizadas, MP3s o equipos de musica\n- Ingresar con bebidas alcohélicas</b>', -9.855015, 21.90327, 3.780991, 179.5061, 'Quad', '', '17-Prohibido', ''),
+(18, 6, 'general', '<b>INCUMPLIMIENTO DE NORMAS\nEl incumplimiento de las normas y disposiciones pone en riesgo la seguridad de todos.</b>', -69, 22, 82, 0, 'Quad', '', '18-Incumplimiento', '');
 
 -- --------------------------------------------------------
 
@@ -345,8 +438,8 @@ INSERT INTO `signals` (`id`, `index`, `descripcion`, `text`, `x`, `y`, `z`, `rot
 -- Table structure for table `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -361,16 +454,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `puesto` varchar(255) NOT NULL,
   `examenRealizado` int(11) NOT NULL,
   `moduloA` int(11) NOT NULL,
-  `fechaExamen` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=349 ;
+  `fechaExamen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`, `name`, `lastname`, `DNI`, `legajo`, `fechaNac`, `grupoSang`, `estudiosFinales`, `empresa`, `email`, `puesto`, `examenRealizado`, `moduloA`, `fechaExamen`) VALUES
-(1, 'santi', 'santi123', 'Santiago', 'Roca', 32654987, '54', '2016-07-05', '0+', 'Universitario', 'PRIII', '123@PRIII.com', 'GERENCIA OPERACIONES', 1, 1, 1467601200),
+(1, 'santi', 'santi123', 'Santiago', 'Roca', 32654987, '54', '2016-07-05', '0+', 'Universitario', 'PRIII', '123@PRIII.com', 'GERENCIA OPERACIONES', 0, 0, 1467601200),
 (2, 'reyrobertoelias', 'reyrobertoelias123', 'Roberto Elias ', 'Rey', 32654987, '31', '2016-07-04', '0-', 'Universitario', 'PRIII', '123@PRIII.com', 'MANTENIMIENTO', 0, 0, 1404183600),
 (3, 'paulucciluisalberto', 'paulucciluisalberto123', 'Luis Alberto ', 'Paulucci', 32654987, '75', '2016-07-06', 'AB+', 'Universitario', 'FIAT', '123@PRIII.com', 'GERENCIA OPERACIONES', 1, 1, 1467601200),
 (4, 'tobanellijuanjose', 'tobanellijuanjose123', 'Juan Jose ', 'Tobanelli', 32654987, '97', '2016-07-02', 'AB-', 'Universitario', 'FIAT', '123@PRIII.com', 'PROCESOS', 1, 1, 1406862000),
@@ -702,9 +794,9 @@ INSERT INTO `usuarios` (`id`, `user`, `pass`, `name`, `lastname`, `DNI`, `legajo
 (330, 'lopezezequieldorian', 'lopezezequieldorian123', 'Ezequiel Dorian ', 'Lopez', 0, '1151', '0000-00-00', '', '', '', '', 'EXPEDICION', 0, 0, 0),
 (331, 'maldonadolucassebastian', 'maldonadolucassebastian123', 'Lucas Sebastian ', 'Maldonado', 0, '1153', '0000-00-00', '', '', '', '', 'LABORATORIO', 0, 0, 0),
 (332, 'mercadomarianonicolas', 'mercadomarianonicolas123', 'Mariano Nicolas ', 'Mercado', 0, '1155', '0000-00-00', '', '', '', '', 'TDI', 0, 0, 0),
-(333, 'fernandezpabloezequiel', 'fernandezpabloezequiel123', 'Pablo Ezequiel ', 'Fernandez', 0, '1156', '0000-00-00', '', '', '', '', 'DNT - MTD', 0, 0, 0);
+(333, 'fernandezpabloezequiel', 'fernandezpabloezequiel123', 'Pablo Ezequiel ', 'Fernandez', 0, '1156', '0000-00-00', '', '', '', '', 'DNT - MTD', 0, 0, 0),
+(334, 'castrocarlosismael', 'castrocarlosismael123', 'Carlos Ismael ', 'Castro', 0, '1157', '0000-00-00', '', '', '', '', 'TALLER ESTÁTICOS', 0, 0, 0);
 INSERT INTO `usuarios` (`id`, `user`, `pass`, `name`, `lastname`, `DNI`, `legajo`, `fechaNac`, `grupoSang`, `estudiosFinales`, `empresa`, `email`, `puesto`, `examenRealizado`, `moduloA`, `fechaExamen`) VALUES
-(334, 'castrocarlosismael', 'castrocarlosismael123', 'Carlos Ismael ', 'Castro', 0, '1157', '0000-00-00', '', '', '', '', 'TALLER ESTÁTICOS', 0, 0, 0),
 (335, 'pereyragustavoandres', 'pereyragustavoandres123', 'Gustavo Andres ', 'Pereyra', 0, '1158', '0000-00-00', '', '', '', '', 'TALLER ESTÁTICOS', 0, 0, 0),
 (336, 'hinnikevinalexis', 'hinnikevinalexis123', 'Kevin Alexis', 'Hinni', 0, '1160', '0000-00-00', '', '', '', '', 'LABORATORIO', 0, 0, 0),
 (337, 'lopezalexisjoaquin', 'lopezalexisjoaquin123', 'Alexis Joaquin', 'Lopez', 0, '1161', '0000-00-00', '', '', '', '', 'TDI', 0, 0, 0),
@@ -718,8 +810,83 @@ INSERT INTO `usuarios` (`id`, `user`, `pass`, `name`, `lastname`, `DNI`, `legajo
 (345, 'pajongonzalesjuliomarcelo', 'pajongonzalesjuliomarcelo123', 'Gonzales Julio Marcelo ', 'Pajon', 0, '1169', '0000-00-00', '', '', '', '', 'EXPEDICION', 0, 0, 0),
 (346, 'dominguezmaurogabriel', 'dominguezmaurogabriel123', 'Mauro Gabriel ', 'Dominguez', 0, '1170', '0000-00-00', '', '', '', '', 'EXPEDICION', 0, 0, 0),
 (347, 'piacentinimaximilianol.', 'piacentinimaximilianol.123', 'Maximiliano L. ', 'Piacentini', 0, '1171', '0000-00-00', '', '', '', '', 'DNT - MTD', 0, 0, 0),
-(348, 'ceballoslauroraul', 'ceballoslauroraul123', 'Lauro Raul ', 'Ceballos', 0, '1172', '0000-00-00', '', '', '', '', 'GASES', 0, 0, 0);
+(348, 'ceballoslauroraul', 'ceballoslauroraul123', 'Lauro Raul ', 'Ceballos', 0, '1172', '0000-00-00', '', '', '', '', 'GASES', 0, 0, 0),
+(349, 'facu', 'facu123', 'Facundo', 'Ompre', 33893019, '000', '1988-12-09', 'A-', 'Universitarios', 'OIXXIO', 'facundo@oixxio.net', 'PM', 0, 0, 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `changelog`
+--
+ALTER TABLE `changelog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `modulo`
+--
+ALTER TABLE `modulo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `preguntas`
+--
+ALTER TABLE `preguntas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `signals`
+--
+ALTER TABLE `signals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `changelog`
+--
+ALTER TABLE `changelog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+--
+-- AUTO_INCREMENT for table `modulo`
+--
+ALTER TABLE `modulo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `signals`
+--
+ALTER TABLE `signals`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
