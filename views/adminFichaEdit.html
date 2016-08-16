@@ -55,14 +55,21 @@
             <input type="text" class="form-control" ng-model="fData.video">
           </div>
           <div class="form-group">
-            <label>vidtmb</label>
+            <label>Imagen</label>
+            <br>
+            <label class="btn btn-default btn-file" style="margin-bottom:20px;">
+              Seleccionar Imagen
+              <input type="file" 
+                    onchange="angular.element(this).scope().uploadFile(this)"
+                    id="filechooser" style="display: none;">
+            </label>
             <div class="row">
-                  <div class="col-md-12">
-                    <a  class="thumbnail">
-                      <img ng-src="simulador/PR3/petroquimica/Assets/Resources/Signals/imageVideo/{{fData.vidtmb}}.jpg">
-                    </a>
-                  </div>
-                </div>
+              <div class="col-md-12">
+                <a class="thumbnail">
+                  <img ng-src="simulador/PR3/petroquimica/Assets/Resources/Signals/imageVideo/{{fData.vidtmb}}.jpg">
+                </a>
+              </div>
+            </div>
             <!--input type="text" class="form-control" ng-model="fData.vidtmb"-->
           </div> 
           <div class="form-group">
