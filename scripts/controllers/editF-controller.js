@@ -25,6 +25,8 @@
         $scope.uploadFile = function(element) {
             $scope.$apply(function() {
                  $scope.imagen = element.files[0];
+                 var imgName = $scope.imagen.name.split(".")
+                 imgSrc(imgName[0])
              });
             var formData = new FormData();
             formData.append("fileToUpload", $scope.imagen);
@@ -36,13 +38,18 @@
                processData: false,
                contentType: false,
                success: function(response) {
-                  alert(response)
-                  alert("Cambios guardados correctamente")
+                  //alert(response)
                },
                error: function(jqXHR, textStatus, errorMessage) {
                    console.log(errorMessage); // Optional
                }
             });
+        }
+
+        var imgSrc = function (imageSrc) {
+          $scope.fData.vidtmb = imageSrc;
+          //alert(src+imageSrc+".jpg")
+          $scope.$apply();
         }
     }])
 
