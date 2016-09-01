@@ -12,7 +12,7 @@ $sql = 'INSERT INTO respuestas (idUsuario,idModulo,num,respuesta) VALUES
 
 $result = mysqli_query($link,$sql);
 
-echo $sql;
+return $sql;
 /*if (!$result) {
   return "no anduvo";
   die(mysqli_error());

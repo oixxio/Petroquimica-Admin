@@ -14,7 +14,8 @@
             
         //START listEmpresas()
         $scope.listEmpresas = function () {
-            $scope.fechaHoy = $scope.todayTimeStamp.getTime() / 1000;
+            $scope.fechaHoy = $scope.todayTimeStamp.getTime()/1000;
+            console.log($scope.fechaHoy)
         	$scope.empresas = [];
 
             // Recorre array 'users', si la empresa del user actual no se encuentra en la lista de empresas, la agrega a array empresas            

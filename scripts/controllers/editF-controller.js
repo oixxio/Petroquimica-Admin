@@ -49,7 +49,7 @@
         var imgSrc = function (imageSrc) {
           $scope.fData.vidtmb = imageSrc;
           //alert(src+imageSrc+".jpg")
-          $scope.$apply();
+          //$scope.$apply();
         }
     }])
 
