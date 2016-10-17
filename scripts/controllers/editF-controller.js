@@ -11,7 +11,7 @@
             var key = obj.id
             //delete obj.id
             dbFactory.putAPI('signals',key,obj).then(function (response) {
-                linkFactory.updateJsonS().then(function () {                    
+                linkFactory.updateJsonS(obj.idModulo).then(function () {                    
                     logFactory.set('signals',obj,'Admin')
                     //Start fichas load
                     dbFactory.getAPI('signals','').then(function (response) {

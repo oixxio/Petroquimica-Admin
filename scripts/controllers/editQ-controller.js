@@ -12,7 +12,8 @@
             var key = obj.id
             delete obj.id
             dbFactory.putAPI('preguntas',key,obj).then(function (response) {
-                linkFactory.updateJsonQ().then(function () {
+                linkFactory.updateJsonQ(obj.idModulo).then(function (response) {
+                    //console.log(response)
                      alert("Cambios guardados correctamente")
                     logFactory.set('cuestionarios',obj,'Admin')
                     $location.path('/cuestionarios')

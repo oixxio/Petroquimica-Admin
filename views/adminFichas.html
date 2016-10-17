@@ -32,7 +32,7 @@
               <th>video</th>
               <th>vidtmb</th>
               <th>audio</th>
-              <th><span></span></th>
+              <th>modulo</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -58,7 +58,8 @@
                 </div>
               </td>
               <td>{{signal.audio}}</td>
-              <td style="width: 72px;"><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>{{signal.idModulo}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
             </tr>
           </tbody>
         </table>

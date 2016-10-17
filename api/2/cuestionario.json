@@ -1,0 +1,1 @@
+{ "cuestionario": [{"id":"0","pregunta":"Al escuchar la siguiente SIRENA, \u00bfComo debe proceder?","respuesta1":"Avisar al responsable del sector m\u00e1s cercano","respuesta2":"Evacuar la planta","respuesta3":"Permanecer en su puesto de trabajo\/ir a los puntos de reuni\u00f3n","respCorrecta":"2","idModulo":"2","index":"1","trigger":"VOCINA_A"}]}

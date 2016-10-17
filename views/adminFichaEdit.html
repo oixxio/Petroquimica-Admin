@@ -76,7 +76,17 @@
             <label>Audio</label>
             <input type="text" class="form-control" ng-model="fData.audio">
           </div>                                                        
-
+          <div class="form-group">
+            <label>Seleccione al módulo que corresponde</label>           
+            <div class="btn-group btn-group-justified">          
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'1'" uncheckable>1</label>
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'2'" uncheckable>2</label>
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'3'" uncheckable>3</label>
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'4'" uncheckable>4</label>
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'5'" uncheckable>5</label>
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'6'" uncheckable>6</label> 
+              <label class="btn btn-default" ng-model="fData.idModulo" uib-btn-radio="'7'" uncheckable>7</label>                      
+            </div>
           <br>                                        
           <button type="submit" class="btn btn-primary btn-block" ng-click="saveFData(fData)"><b>Guardar cambios</b></button>
         </form>      

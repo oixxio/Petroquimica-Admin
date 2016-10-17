@@ -4,7 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 $link = mysqli_connect('localhost', 'root', '', 'petroquimica');
 mysqli_query($link,"SET NAMES 'utf8'");
-$sql = "select * from preguntas";
+$raw_JSON = file_get_contents('php://input');
+$JSON = json_decode($raw_JSON);
+$idModulo = $JSON->data;
+$sql = "select * from preguntas where idModulo = ".$idModulo;
 $result = mysqli_query($link,$sql);
 $input = '';
 $i=0;
@@ -14,7 +17,7 @@ while ($data =  mysqli_fetch_assoc($result)) {
 }
 //$input = fixBadUnicodeForJson($input);
 $input = iconv("UTF-8", "Windows-1252", $input);
-$cuestionario = fopen("cuestionario.json", "w");
+$cuestionario = fopen($idModulo."/cuestionario.json", "w");
 fwrite($cuestionario, '{ "cuestionario": ['.$input."]}");
 fclose($cuestionario);
 //Fundamental!

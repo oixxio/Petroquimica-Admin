@@ -25,11 +25,14 @@
         link.setFEdit = function (F) {
              ficha = F 
         }        
-    	link.updateJsonQ = function () {
-            return $http.get('api/updateJsonCuestionario.php/');
+    	link.updateJsonQ = function (idModulo) {
+            var data = {data: idModulo}
+            //console.log(data)
+            return $http.post('api/updateJsonCuestionario.php/',data);
         }
-        link.updateJsonS = function () {
-            return $http.get('api/updateJsonFichas.php/');
+        link.updateJsonS = function (idModulo) {
+            var data = {data: idModulo}
+            return $http.post('api/updateJsonFichas.php/',data);
         }
     	return link;
     }]);
