@@ -3,7 +3,7 @@
 
     /*[Start indexController]*/
     angular.module('app.dashboard').
-    controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory', 
+    controller('indexController', ['$scope','$location','loginFactory','$http','$resource','dbFactory',
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
 
         /*[Start load users list]*/
@@ -14,47 +14,54 @@
                 var usersTrainedExt = 0;
                 var usersQtyInt = 0;
                 var usersQtyExt = 0;
-             
+                var pass = 0, passExt = 0, fail = 0, failExt = 0;
                 //Cantidad de Empleados
                 $scope.usersQty = users.length;
 
                 for (var i = 0; i < users.length; i++) {
+                    users[i].modulo = JSON.parse(users[i].modulo)
+                    users[i].examenes = JSON.parse(users[i].examenes)
                     if (users[i].empresa == "PRIII" || users[i].empresa == "") {
                         usersQtyInt++;
                     } else {
                         usersQtyExt++;
                     }
-                    //Determinacion de campo 'Examen'
-                    if (users[i].moduloA == '1') {
-                        users[i].examen = 'Si'
-                    } else {
-                        users[i].examen = 'No'
+                    //Cantidad de examenes realizados
+                    for (var j = 1; j < 7; j++) {
+                      if (users[i].empresa == "PRIII") {
+                        if(users[i].modulo[j] > 6){
+                          pass++;
+                          users[i].examen = 'Si'
+                        }else{
+                          fail++;
+                        }
+                        usersTrained += users[i].examenes[j]
+                      }else{
+                        users[i].modulo[j] > 6 ? passExt++: failExt++;
+                        usersTrainedExt += parseInt(users[i].examenes[j])
+                      }
                     }
                     //Determinacion de campo 'examenRealizoStr'
-                    if (users[i].examenRealizado == '1') {
-                        users[i].examenRealizadoStr = 'Si'
-                    } else {
-                        users[i].examenRealizadoStr = 'No'
-                        users[i].examen = 'No'
-                    }
-                    //Cantidad de examenes realizados
-                    if (users[i].empresa == "PRIII") {
-                        usersTrained += parseInt(users[i].examenRealizado);
-                    } else {
-                        usersTrainedExt += parseInt(users[i].examenRealizado);
-                    }
+
                 }
-                
+
                 $scope.usersQtyInt = usersQtyInt;
                 $scope.usersQtyExt = usersQtyExt;
 
                 $scope.usersTrained = usersTrained
                 $scope.usersTrainedExt = usersTrainedExt
                 $scope.users = users
+
+                $scope.pass = pass;
+                $scope.fail = fail;
+                $scope.passExt = passExt;
+                $scope.failExt = failExt;
+                $scope.perPass = (pass * 100)/(pass+fail);
+                $scope.perPassExt = (passExt * 100)/(passExt+failExt);
                 /*[Start load questions list]*/
-                dbFactory.getAPI('preguntas','').then(function (response) {
+                /*dbFactory.getAPI('preguntas','').then(function (response) {
                    $scope.questions = response.data
-                   /*[Start load answers list]*/
+                   /*[Start load answers list]
                     dbFactory.getAPI('respuestas','').then(function (response) {
                         var answers = response.data
                         var grade = 0
@@ -91,17 +98,16 @@
                         $scope.pass = pass;
                         $scope.fail = fail;
                         $scope.passExt = passExt;
-                        $scope.failExt = failExt;                
+                        $scope.failExt = failExt;
                         $scope.perPass = (pass * 100)/(pass+fail);
                         $scope.perPassExt = (passExt * 100)/(passExt+failExt);
 
                     })
-                    /*[End load answers list]*/
+                    /*[End load answers list]
                 })
                 /*[End load questions list]*/
             })
-        }
-        $scope.getUsers()
+        }()
         $scope.getQuestions = function () {
             /*[Start load questions list]*/
             dbFactory.getAPI('preguntas','').then(function (response) {
@@ -114,7 +120,7 @@
             $scope.signals = response.data
         })
         //End fichas load
-        
+
         /*[Start load log list]*/
         dbFactory.getAPI('changeLog','').then(function (response) {
             $scope.changes = response.data
@@ -297,8 +303,8 @@
 
         //START Chequea si está loggeado o no
         $scope.checkLoggedIn = function () {
-            if ($scope.logged != true) { 
-                $location.path('/'); 
+            if ($scope.logged != true) {
+                $location.path('/');
             }
         }
         //END Chequea si está loggeado o no

@@ -1,5 +1,5 @@
 <div ng-controller="usersController" ng-init="checkLoggedIn()">
-  <div class="col-md-12 main">          
+  <div class="col-md-12 main">
     <div class="row page-header">
       <div class="col-md-2">
         <h1>Usuarios</h1>
@@ -32,9 +32,6 @@
               <th>Empresa</th>
               <th>Email</th>
               <th>Puesto</th>
-              <th>Hizo Examen?</th>
-              <th>Aprobo?</th>
-              <th>Cuando?</th>
               <th><span></span></th>
               <th><span></span></th>
             </tr>
@@ -53,8 +50,6 @@
               <td>{{user.empresa}}</td>
               <td>{{user.email}}</td>
               <td>{{user.puesto}}</td>
-              <td>{{user.examenRealizadoStr}}</td>
-              <td>{{user.examen}}</td>
               <td>{{user.fechaExamen*1000 | date:'yyyy-MM-dd'}}</td>
               <td style="width: 72px;"><a href="" ng-click="setUEdit(user)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
             </tr>
@@ -64,4 +59,3 @@
     </uib-tab>
   </uib-tabset>
 </div>
-

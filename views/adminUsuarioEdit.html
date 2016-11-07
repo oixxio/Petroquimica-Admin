@@ -1,9 +1,9 @@
 <div ng-controller="editUController" ng-init="checkLoggedIn()">
-  <div class="col-md-12 main">          
+  <div class="col-md-12 main">
     <div class="row page-header">
       <div class="col-md-12">
         <h1>Editar Usuario ({{userId}})</h1>
-      </div><!-- /.col-md-12 -->   
+      </div><!-- /.col-md-12 -->
     </div><!-- /.row page-header -->
   </div><!-- /.col-md-12 main -->
   <div class="container-fluid"><!--Profile container-->
@@ -14,7 +14,7 @@
           <div class="form-group">
             <label>Nombre de usuario</label>
             <input type="text" class="form-control" readonly ng-value="uData.user">
-          </div>      
+          </div>
           <div class="form-group">
             <label>Contraseña</label>
             <input type="text" class="form-control" ng-model="uData.pass">
@@ -22,11 +22,11 @@
           <div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control" readonly ng-value="uData.name">
-          </div>  
+          </div>
           <div class="form-group">
             <label>Apellido</label>
             <input type="text" class="form-control" readonly ng-value="uData.lastname">
-          </div>  
+          </div>
           <div class="form-group">
             <label>Legajo</label>
             <input type="text" class="form-control" readonly ng-value="uData.legajo">
@@ -34,28 +34,80 @@
           <div class="form-group">
             <label>Puesto</label>
             <input type="text" class="form-control" readonly ng-value="uData.puesto">
-          </div>                                   
+          </div>
           <div class="form-group">
-            <label>¿Examen realizado?</label>
+            <label>¿Examenes realizados?</label>
             <br>
             <div class="btn-group">
-              <label class="btn btn-default" ng-model="uData.examenRealizado" uib-btn-radio="'0'">No</label>
-              <label class="btn btn-default" ng-model="uData.examenRealizado" uib-btn-radio="'1'">Sí</label>
+              <div>
+                <label class="btn btn-default">Examenes modulo 1:</label>
+                <input type="number" ng-value = "{{uData.examenes[1]}}" ng-model = "uData.examenes[1]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 2:</label>
+                <input type="number" ng-value = "{{uData.examenes[2]}}" ng-model = "uData.examenes[2]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 3:</label>
+                <input type="number" ng-value = "{{uData.examenes[3]}}" ng-model = "uData.examenes[3]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 4:</label>
+                <input type="number" ng-value = "{{uData.examenes[4]}}" ng-model = "uData.examenes[4]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 5:</label>
+                <input type="number" ng-value = "{{uData.examenes[5]}}" ng-model = "uData.examenes[5]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 6:</label>
+                <input type="number" ng-value = "{{uData.examenes[6]}}" ng-model = "uData.examenes[6]">
+              </div>
+              <div>
+                <label class="btn btn-default">Examenes modulo 7:</label>
+                <input type="number" ng-value = "{{uData.examenes[7]}}" ng-model = "uData.examenes[7]">
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <label>¿Examen Aprobado?</label>
+            <label>Modulos Aprobados?</label>
             <br>
             <div class="btn-group">
-              <label class="btn btn-default" ng-model="uData.moduloA" uib-btn-radio="'0'">No</label>
-              <label class="btn btn-default" ng-model="uData.moduloA" uib-btn-radio="'1'">Sí</label>
+              <div>
+                <label class="btn btn-default">Modulo 1:</label>
+                <input type="number" ng-value = "{{uData.modulo[1]}}" ng-model = "uData.modulo[1]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 2:</label>
+                <input type="number" ng-value = "{{uData.modulo[2]}}" ng-model = "uData.modulo[2]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 3:</label>
+                <input type="number" ng-value = "{{uData.modulo[3]}}" ng-model = "uData.modulo[3]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 4:</label>
+                <input type="number" ng-value = "{{uData.modulo[4]}}" ng-model = "uData.modulo[4]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 5:</label>
+                <input type="number" ng-value = "{{uData.modulo[5]}}" ng-model = "uData.modulo[5]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 6:</label>
+                <input type="number" ng-value = "{{uData.modulo[6]}}" ng-model = "uData.modulo[6]">
+              </div>
+              <div>
+                <label class="btn btn-default">Modulo 7:</label>
+                <input type="number" ng-value = "{{uData.modulo[7]}}" ng-model = "uData.modulo[7]">
+              </div>
             </div>
           </div>
-          <br>                                        
-          <button type="submit" class="btn btn-primary btn-block" ng-click="saveUData(uData)"><b>Guardar cambios</b></button>
-        </form>      
+          <br>
+          <button type="submit" class="btn btn-primary btn-block" ng-click="saveUData(uData,modulos)"><b>Guardar cambios</b></button>
+        </form>
       </div>
     </div><!--/.row-->
     <br><br><br>
   </div><!--/Profile container-->
-</div>   
+</div>

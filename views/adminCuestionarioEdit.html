@@ -1,9 +1,9 @@
 <div ng-controller="editQController" ng-init="checkLoggedIn()">
-  <div class="col-md-12 main">          
+  <div class="col-md-12 main">
   	<div class="row page-header">
   	  <div class="col-md-12">
   	    <h1>Editar Cuestionario ({{qData.id}})</h1>
-  	  </div><!-- /.col-md-12 -->   
+  	  </div><!-- /.col-md-12 -->
   	</div><!-- /.row page-header -->
   </div><!-- /.col-md-12 main -->
   <div class="container-fluid"><!--Profile container-->
@@ -15,10 +15,11 @@
             <label>Pregunta</label>
             <div class="input-group">
               <span class="input-group-addon">¿</span>
-              <input type="text" ng-value="qData.pregunta" ng-model="qData.pregunta" class="form-control">
+              <textarea ng-model="qData.pregunta" ng-value="qData.pregunta"
+              class="form-control" name="name" rows="8" cols="40"></textarea>
               <span class="input-group-addon">?</span>
             </div>
-          </div>  
+          </div>
           <br>
           <div class="form-group">
             <label>Respuestas</label>
@@ -36,34 +37,34 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">3</span>
-              <input type="text" class="form-control" ng-value="qData.respuesta3" ng-model="qData.respuesta3"> 
-            </div><!-- /input-group -->      
+              <input type="text" class="form-control" ng-value="qData.respuesta3" ng-model="qData.respuesta3">
+            </div><!-- /input-group -->
           </div>
           <br>
           <div class="form-group">
-            <label>Seleccione la respuesta correcta</label>           
-            <div class="btn-group btn-group-justified">          
+            <label>Seleccione la respuesta correcta</label>
+            <div class="btn-group btn-group-justified">
               <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'1'" uncheckable>Respuesta 1</label>
               <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'2'" uncheckable>Respuesta 2</label>
-              <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'3'" uncheckable>Respuesta 3</label>          
-            </div>           
+              <label class="btn btn-default" ng-model="qData.respCorrecta" uib-btn-radio="'3'" uncheckable>Respuesta 3</label>
+            </div>
           </div>
           <br>
           <div class="form-group">
-            <label>Seleccione al módulo que corresponde</label>           
-            <div class="btn-group btn-group-justified">          
+            <label>Seleccione al módulo que corresponde</label>
+            <div class="btn-group btn-group-justified">
               <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'1'" uncheckable>1</label>
               <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'2'" uncheckable>2</label>
               <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'3'" uncheckable>3</label>
               <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'4'" uncheckable>4</label>
               <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'5'" uncheckable>5</label>
-              <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'6'" uncheckable>6</label> 
-              <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'7'" uncheckable>7</label>                      
-            </div>           
-          </div>                                 
-          <br>                                        
+              <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'6'" uncheckable>6</label>
+              <label class="btn btn-default" ng-model="qData.idModulo" uib-btn-radio="'7'" uncheckable>7</label>
+            </div>
+          </div>
+          <br>
           <button class="btn btn-primary btn-block" ng-click="saveData(qData)"><b>Guardar cambios</b></button>
-        </form>      
+        </form>
       </div>
     </div><!--/.row-->
     <br><br><br>
