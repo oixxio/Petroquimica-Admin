@@ -4,7 +4,7 @@
     angular.module('app.dashboard', [
     	'ngRoute',
     	'ngResource',
-    	'ui.bootstrap'
+    	'ui.bootstrap',
+    	'textAngular'
     	]);
-
 })();

@@ -1,6 +1,7 @@
-<div ng-controller="fichasController" ng-init="checkLoggedIn()">
+<div ng-controller="fichasController" ng-init="checkLoggedIn();readModules();">
   <div class="col-md-12 main">          
     <div class="row page-header">
+    
       <div class="col-md-2">
         <h1>Fichas</h1>
       </div><!-- /.col-md-2 -->
@@ -15,39 +16,60 @@
     </div><!-- /.row page-header-->
   </div>
   <uib-tabset active="active">
-    <uib-tab heading="Fichas">
+    <uib-tab heading="Modulo 1">
       <div class="table-responsive">
-        <table class="table table-striped" style="font-size:xx-small;">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
               <th>Indice</th>
               <th>Descripción</th>
               <th>Texto</th>
-              <th>X</th>
-              <th>Y</th>
-              <th>Z</th>
-              <th>rotY</th>
-              <th>icon</th>
-              <th>video</th>
               <th>vidtmb</th>
-              <th>audio</th>
-              <th>modulo</th>
               <th><span></span></th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="signal in signals | filter: searchText">
+            <tr ng-repeat="signal in signals1 | filter: searchText">
               <td>{{signal.id}}</td>
               <td>{{signal.index}}</td>
               <td>{{signal.descripcion}}</td>
               <td>{{signal.text}}</td>
-              <td>{{signal.x}}</td>
-              <td>{{signal.y}}</td>
-              <td>{{signal.z}}</td>
-              <td>{{signal.rotY}}</td>
-              <td>{{signal.icon}}</td>
-              <td>{{signal.video}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 2">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals2 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
               <td>
                 <div class="row">
                   <div class="col-md-12">
@@ -58,7 +80,186 @@
                 </div>
               </td>
               <td>{{signal.audio}}</td>
-              <td>{{signal.idModulo}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 3">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals3 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td>{{signal.audio}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 4">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals4 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td>{{signal.audio}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 5">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals5 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td>{{signal.audio}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 6">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals6 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td>{{signal.audio}}</td>
+              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="Modulo 7">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Indice</th>
+              <th>Descripción</th>
+              <th>Texto</th>
+              <th>vidtmb</th>
+              <th>audio</th>
+              <th><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="signal in signals7 | filter: searchText">
+              <td>{{signal.id}}</td>
+              <td>{{signal.index}}</td>
+              <td>{{signal.descripcion}}</td>
+              <td>{{signal.text}}</td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <a  class="thumbnail">
+                      <img ng-src="api/imagenes-signals/{{signal.vidtmb}}.jpg">
+                    </a>
+                  </div>
+                </div>
+              </td>
+              <td>{{signal.audio}}</td>
               <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
             </tr>
           </tbody>
@@ -68,3 +269,10 @@
   </uib-tabset>
 </div>
 
+<style>
+  #exTab2 h3 {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+  }
+</style>

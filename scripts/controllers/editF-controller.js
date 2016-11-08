@@ -6,6 +6,7 @@
     			function($scope,$window,$location,$http,logFactory,dbFactory,linkFactory){
                   
         $scope.fData = linkFactory.getF();    
+        $scope.htmlcontent = $scope.fData.text;
 
         $scope.saveFData = function (obj) {
             var key = obj.id
@@ -22,6 +23,8 @@
                 });
             }) 
         }
+
+
         $scope.uploadFile = function(element) {
             $scope.$apply(function() {
                  $scope.imagen = element.files[0];
@@ -51,6 +54,8 @@
           //alert(src+imageSrc+".jpg")
           //$scope.$apply();
         }
-    }])
+
+    }]);
+
 
 })();
