@@ -71,7 +71,7 @@
               <td class="tg-36r9"><b>Año</b></td>
             </tr>
             <!-- En angular e multiplica el timestamp por 1000 porque el timestamps de la base de datos no considera milisegs-->
-            <tr ng-repeat="user in users | filter: {examen:'Si', empresa: empresaSelected, fechaExamen: fechaHoy}" style="text-align:center;">
+            <tr ng-repeat="user in empresasUsers | filter: empresaSelected" style="text-align:center;">
               <td class="tg-36r9">{{user.DNI}}</td>
               <td class="tg-36r9">{{user.lastname + ", " + user.name}}</td>
               <td class="tg-36r9">{{user.fechaNac}}</td>
@@ -107,9 +107,6 @@
     <button id="impTablaBtn" class="btn btn-primary btn-block">Imprimir</button>
   </div>
 </div>
-
-
-
 
 
 <script>

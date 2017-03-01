@@ -2,7 +2,7 @@
 <div class="background-color"></div>
 <div class="row">
   <div ng-controller="addUController" class="col-md-4">
-    <form class="form-horizontal">
+    <form class="form-horizontal" ng-submit="addUData(newU)">
       <h2>Bienvenido Nuevo usuario</h2>
       <br>
       <div class="form-group">
@@ -34,16 +34,17 @@
         <input type="text" class="form-control" ng-model="newU.estudiosFinales" placeholder="Estudios Finales (ej: 'Secundario')" required>
       </div>  
       <div class="form-group">
-        <input type="text" class="form-control" ng-model="newU.empresa" placeholder="Empresa (ej: 'PRIII')" required>
+        <input id=empresaInput type="text" class="form-control" ng-model="newU.empresa" placeholder="Empresa (ej: 'PRIII')" required ng-keyup="onkeyup()" ng-pattern="/^[A-Z]/">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" ng-model="newU.email" placeholder="Email" required>
+        <input required type="email" name="email" ng-model="newU.email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" class="form-control" placeholder="Email"/>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" ng-model="newU.puesto" placeholder="Puesto" required>
       </div>                   
       <br>
-      <button type="submit" class="btn btn-pr3 btn-block" ng-click="addUData(newU);newU = null"><b>Crear nuevo usuario</b></button>
+      <button type="submit" class="btn btn-pr3 btn-block"><b>Crear nuevo usuario</b></button>
     </form>  
   </div>
   <div class="col-md-1" style="font-size:0px; height:800px;">a</div>
@@ -72,7 +73,18 @@
     </div>
   </div><!-- .col-md-6 -->
 </div><!-- .row -->    
+<div id="modalLogin">
+  <div class="navModal">
+    <h1></h1>
+  </div>
+  <div class="row contenedor">
+    <i class="fa col-md-6" aria-hidden="true"></i>
+    <p class="col-md-6">{{errorMessage}}</p>
+  </div>
 
+  <button class="btn btn-primary btn-block">Aceptar</button>
+</div>
+</div>
 <style>
 
 h2 {
@@ -134,4 +146,56 @@ h2 {
   display:none;
 }
 
+
+
+
+#modalLogin{
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  z-index: 100000000;
+  border-radius: 3px;
+  box-shadow: 0 0px 10px 10px rgba(33, 33, 33, .3);
+  -webkit-transition: all .3s ease-in-out;
+  --webkit-transform: scale(.8);
+  display: none;
+}
+#modalLogin .navModal {
+  height: 80px;
+  width: 100%;
+  background-color: #028081
+}
+#modalLogin .navModal h1{
+  color: white;
+  margin: 0;
+  vertical-align: center;
+  line-height: 67px;
+  display: block;
+  margin: 0px auto;
+  padding-left: .5em;
+}
+#modalLogin .contenedor{
+  height: 45%;
+  margin-top: 4em;
+}
+#modalLogin .contenedor i{
+  display: block;
+  margin: 0 auto;
+  font-size: 8em;
+  padding-left: 1em;
+  color: rgba(0, 79, 80, 0.7);
+}
+#modalLogin .contenedor p{
+  font-size: 1.5em;
+  display: block;
+  padding-right: 4em;
+}
+#modalLogin button{
+  width: 20%;
+  display: block;
+  margin: 0 auto;
+}
 </style>

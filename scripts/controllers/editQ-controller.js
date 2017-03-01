@@ -6,11 +6,13 @@
     			function($scope,$location,logFactory,$http,$route,dbFactory,linkFactory){
                    
         $scope.qData = linkFactory.getQ();
-        $scope.questionId = linkFactory.getQ().id;        
+        $scope.questionId = linkFactory.getQ().id;
+      
 
-        $scope.saveData = function (obj) {
+        $scope.saveData = function (obj) { 
             var key = obj.id
             delete obj.id
+            console.log(obj,$scope.qData);
             dbFactory.putAPI('preguntas',key,obj).then(function (response) {
                 linkFactory.updateJsonQ(obj.idModulo).then(function (response) {
                     //console.log(response)
@@ -18,7 +20,7 @@
                     logFactory.set('cuestionarios',obj,'Admin')
                     $location.path('/cuestionarios')
                 });                
-            }) 
+            })  
         }
     }])
 

@@ -6,7 +6,7 @@
     			function($scope,$location,loginFactory,$http,$resource,dbFactory){
   				
 
-        dbFactory.getAPI('changeLog','').then(function (response) {
+        dbFactory.getAPI('changelog','').then(function (response) {
             $scope.changes = response.data
         })
     }])

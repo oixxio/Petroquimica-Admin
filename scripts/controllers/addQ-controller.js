@@ -8,7 +8,6 @@
         $scope.newQ = {}
         $scope.newData = function (obj) {
             dbFactory.postAPI('preguntas',obj).then(function (response) {
-                console.log(response)
                 linkFactory.updateJsonQ().then(function () {
                     alert("Nueva pregunta guardada")
                     logFactory.set('preguntas',obj,'Admin')

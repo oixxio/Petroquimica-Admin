@@ -1,10 +1,9 @@
 <div ng-controller="editFController" ng-init="checkLoggedIn()">
+  <div id="modalBackground">
   <div class="col-md-12 main">          
     <div class="row page-header">
       <div class="col-md-12">
         <h1>Editar Ficha ({{fData.id}})</h1>
-      </div><!-- /.col-md-12 -->   
-    </div><!-- /.row page-header -->
   </div><!-- /.col-md-12 main -->
   <div class="container-fluid"><!--Container-->
     <br><br>
@@ -20,9 +19,8 @@
             <input type="text" class="form-control" ng-model="fData.descripcion">
           </div>                 
           <div class="form-group">
-            <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" 
-                ta-toolbar="[['bold', 'italics', 'underline', 'ul'],
-                             ['justifyLeft','justifyCenter','justifyRight', 'justifyFull','indent','outdent'],
+            <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" id="inputEdit" 
+                ta-toolbar="[['bold'],
                              ['wordcount', 'charcount']]">
             </div>
           </div>
@@ -61,18 +59,17 @@
             <br>
             <label class="btn btn-default btn-file" style="margin-bottom:20px;">
               Seleccionar Imagen
-              <input type="file" 
+              <input type="file" id='files'
                     onchange="angular.element(this).scope().uploadFile(this)"
                     id="filechooser" style="display: none;">
             </label>
             <div class="row">
               <div class="col-md-12">
                 <a class="thumbnail">
-                  <img ng-src="api/imagenes-signals/{{fData.vidtmb}}.jpg">
+                  <img id="image-edit" ng-src="api/imagenes-signals/{{fData.vidtmb}}.jpg" style="max-width: 70% !important">
                 </a>
               </div>
             </div>
-            <!--input type="text" class="form-control" ng-model="fData.vidtmb"-->
           </div> 
           <div class="form-group">
             <label>Audio</label>
@@ -93,6 +90,70 @@
           <button type="submit" class="btn btn-primary btn-block" ng-click="saveFData(fData)"><b>Guardar cambios</b></button>
         </form>      
       </div>
+      <div id="modal">
+        <div class="navModal">
+          <h1>Lo sentimos</h1>
+        </div>
+        <div class="row contenedor">
+          <i class="fa fa-exclamation-triangle col-md-6" aria-hidden="true"></i>
+          <p class="col-md-6"></p>
+        </div>
+
+        <button class="btn btn-primary btn-block">Aceptar</button>
+      </div>
+      </div>
+      <style type="text/css">
+
+      #modal{
+        width: 50%;
+        height: 50%;
+        background-color: white;
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        z-index: 100000000;
+        border-radius: 3px;
+        box-shadow: 0 0px 10px 10px #eee;
+        -webkit-transition: all .3s ease-in-out;
+        --webkit-transform: scale(.8);
+        display: none;
+      }
+      #modal .navModal {
+        height: 80px;
+        width: 100%;
+        background-color: #028081
+      }
+      #modal .navModal h1{
+        color: white;
+        margin: 0;
+        vertical-align: center;
+        line-height: 67px;
+        display: block;
+        margin: 0px auto;
+        padding-left: .5em;
+      }
+      #modal .contenedor{
+        height: 50%;
+        margin-top: 4em;
+      }
+      #modal .contenedor i{
+        display: block;
+        margin: 0 auto;
+        font-size: 8em;
+        padding-left: 1em;
+        color: rgba(0, 79, 80, 0.7);
+      }
+      #modal .contenedor p{
+        font-size: 1.5em;
+        display: block;
+        padding: 1.6em
+      }
+      #modal button{
+        width: 20%;
+        display: block;
+        margin: 0 auto;
+      }
+      </style>
     </div><!--/.row-->
     <br><br><br>
   </div><!--/Container-->

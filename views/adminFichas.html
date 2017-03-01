@@ -15,11 +15,12 @@
       </div><!-- /.col-md-3 -->
     </div><!-- /.row page-header-->
   </div>
+
   <uib-tabset active="active">
     <uib-tab heading="Modulo 1">
       <div class="table-responsive">
         <table class="table table-striped">
-          <thead>
+          <thead> 
             <tr>
               <th>ID</th>
               <th>Indice</th>
@@ -34,7 +35,7 @@
               <td>{{signal.id}}</td>
               <td>{{signal.index}}</td>
               <td>{{signal.descripcion}}</td>
-              <td>{{signal.text}}</td>
+              <td ng-bind-html="signal.text"></td>
               <td>
                 <div class="row">
                   <div class="col-md-12">
@@ -44,12 +45,18 @@
                   </div>
                 </div>
               </td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+                <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </uib-tab>
+
     <uib-tab heading="Modulo 2">
       <div class="table-responsive">
         <table class="table table-striped">
@@ -60,7 +67,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -69,7 +75,7 @@
               <td>{{signal.id}}</td>
               <td>{{signal.index}}</td>
               <td>{{signal.descripcion}}</td>
-              <td>{{signal.text}}</td>
+              <td ng-bind-html="signal.text"></td>
               <td>
                 <div class="row">
                   <div class="col-md-12">
@@ -79,8 +85,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -96,7 +106,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -115,8 +124,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -132,7 +145,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -151,8 +163,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -168,7 +184,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -187,8 +202,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -204,7 +223,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -223,8 +241,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -240,7 +262,6 @@
               <th>Descripción</th>
               <th>Texto</th>
               <th>vidtmb</th>
-              <th>audio</th>
               <th><span></span></th>
             </tr>
           </thead>
@@ -259,8 +280,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{signal.audio}}</td>
-              <td><a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a></td>
+              <td>
+              <!-- <a href="" ng-click="setFEdit(signal)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</a> -->
+                <button type="button" class="btn btn-default btn-lg" aria-label="Left Align" ng-click="setFEdit(signal)">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -14,98 +14,46 @@
                 var usersTrainedExt = 0;
                 var usersQtyInt = 0;
                 var usersQtyExt = 0;
-                var pass = 0, passExt = 0, fail = 0, failExt = 0;
+                var examInt = 0;
+                var examExt = 0;
+                var passInt = 0, passExt = 0;
+                var notas = [];
                 //Cantidad de Empleados
                 $scope.usersQty = users.length;
 
                 for (var i = 0; i < users.length; i++) {
-                    users[i].modulo = JSON.parse(users[i].modulo)
-                    users[i].examenes = JSON.parse(users[i].examenes)
+                    users[i].modulo = JSON.parse(users[i].modulo);
+                    users[i].examenes = JSON.parse(users[i].examenes);
+
                     if (users[i].empresa == "PRIII" || users[i].empresa == "") {
-                        usersQtyInt++;
-                    } else {
-                        usersQtyExt++;
-                    }
-                    //Cantidad de examenes realizados
-                    for (var j = 1; j < 7; j++) {
-                      if (users[i].empresa == "PRIII") {
-                        if(users[i].modulo[j] > 6){
-                          pass++;
-                          users[i].examen = 'Si'
-                        }else{
-                          fail++;
+                        usersQtyInt++; 
+                        examInt = users[i].examenes[1] + examInt; 
+                        if (users[i].modulo[1] > 6) {
+                            passInt++;
                         }
-                        usersTrained += users[i].examenes[j]
-                      }else{
-                        users[i].modulo[j] > 6 ? passExt++: failExt++;
-                        usersTrainedExt += parseInt(users[i].examenes[j])
-                      }
+                    } else {
+                        examExt = users[i].examenes[1] + examExt;
+                        usersQtyExt++;  
+                        if (users[i].modulo[1] > 6) {
+                            passExt++;
+                        }  
                     }
-                    //Determinacion de campo 'examenRealizoStr'
 
                 }
-
+                $scope.examInt = examInt;
+                $scope.examExt = examExt;
                 $scope.usersQtyInt = usersQtyInt;
                 $scope.usersQtyExt = usersQtyExt;
 
-                $scope.usersTrained = usersTrained
-                $scope.usersTrainedExt = usersTrainedExt
-                $scope.users = users
+                $scope.usersTrained = usersTrained;
+                $scope.usersTrainedExt = usersTrainedExt;
+                $scope.users = users;
 
-                $scope.pass = pass;
-                $scope.fail = fail;
+                $scope.passInt = passInt;
                 $scope.passExt = passExt;
-                $scope.failExt = failExt;
-                $scope.perPass = (pass * 100)/(pass+fail);
-                $scope.perPassExt = (passExt * 100)/(passExt+failExt);
-                /*[Start load questions list]*/
-                /*dbFactory.getAPI('preguntas','').then(function (response) {
-                   $scope.questions = response.data
-                   /*[Start load answers list]
-                    dbFactory.getAPI('respuestas','').then(function (response) {
-                        var answers = response.data
-                        var grade = 0
-                        var pass = 0, passExt = 0, fail = 0, failExt = 0;
-                        var answerIndex;
-
-                        for (var i = 0; i < 5; i++) {
-                            if ($scope.users[i].examenRealizado == 1) {
-                                grade = 0;
-                                for (var j = 0; j < answers.length; j++) {
-                                    if ($scope.users[i].id == answers[j].idUsuario) {
-                                        answerIndex = parseInt(answers[j].num) - 1;
-                                        if(answers[j].respuesta == $scope.questions[answerIndex].respCorrecta){
-                                            grade++;
-                                        }
-                                    }
-                                }
-                                if(grade >= 8){
-                                    if ($scope.users[i].empresa == "PRIII") {
-                                        pass += 1
-                                    } else {
-                                        passExt += 1
-                                    }
-                                }else{
-                                    if ($scope.users[i].empresa == "PRIII") {
-                                        fail += 1
-                                    } else {
-                                        failExt += 1
-                                    }
-                                }
-                            }
-                        }
-
-                        $scope.pass = pass;
-                        $scope.fail = fail;
-                        $scope.passExt = passExt;
-                        $scope.failExt = failExt;
-                        $scope.perPass = (pass * 100)/(pass+fail);
-                        $scope.perPassExt = (passExt * 100)/(passExt+failExt);
-
-                    })
-                    /*[End load answers list]
-                })
-                /*[End load questions list]*/
+                $scope.passExt = passExt;
+                $scope.perPass = (passInt * 100)/(usersQtyInt);
+                $scope.perPassExt = (passExt * 100)/( usersQtyExt);
             })
         }()
         $scope.getQuestions = function () {
@@ -117,7 +65,7 @@
         /*[End load users list]*/
         //Start fichas load
         dbFactory.getAPI('signals','').then(function (response) {
-            $scope.signals = response.data
+            $scope.signals = response.data; 
         })
         //End fichas load
 

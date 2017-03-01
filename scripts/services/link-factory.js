@@ -24,7 +24,6 @@
         } 
         link.setFEdit = function (F) {
              ficha = F 
-             console.log(ficha);
         }        
     	link.updateJsonQ = function (idModulo) {
             var data = {data: idModulo}

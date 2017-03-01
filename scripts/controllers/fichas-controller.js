@@ -24,12 +24,11 @@
 
         $scope.readModules = function(){
             for (var i = 0; i < $scope.signals.length; i++) {
-                console.log($scope.signals[i].idModulo);
                  if ($scope.signals[i].idModulo === "1") {
-                    console.log($scope.signals[i]);
+                    $scope.signals[i].text = $scope.signals[i].text.replace(/\r\n/g, '<br />').replace(/[\r\n]/g, '<br/>'); 
                     $scope.signals1.push($scope.signals[i]);
                  }else if ($scope.signals[i].idModulo === "2") {
-                    console.log($scope.signals[i]);
+                    //console.log($scope.signals[i]);
                     $scope.signals2.push($scope.signals[i]);
                  }else if ($scope.signals[i].idModulo === "3") {
                     $scope.signals3.push($scope.signals[i]);

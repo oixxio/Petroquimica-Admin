@@ -7,7 +7,7 @@ $idUsuario = isset($_POST["idUsuario"])? $_POST["idUsuario"] : '';
 $nota = isset($_POST["nota"])? $_POST["nota"] : '';
 $nivel = isset($_POST["nivel"])? $_POST["nivel"] : '';
 
-$select = 'SELECT * FROM usuarios WHERE id = 1';
+$select = 'SELECT * FROM usuarios WHERE id = '.$idUsuario;
 $resSelect = mysqli_query($link,$select);
 
 for ($i=0;$i<mysqli_num_rows($resSelect);$i++) {
